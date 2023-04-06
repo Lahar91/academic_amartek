@@ -21,7 +21,7 @@ public class User {
     private Role role;
 
     @OneToMany(mappedBy = "user")
-    public Set<Skill> skill;
+    public Set<UserSkill> userSkill;
 
     @OneToMany(mappedBy = "user")
     public Set<Project> project;
@@ -66,12 +66,12 @@ public class User {
         this.role = role;
     }
 
-    public Set<Skill> getSkill(){
-        return skill;
+    public Set<UserSkill> getUserSkill() {
+        return userSkill;
     }
 
-    public void setSkill(Set<Skill> skills){
-        this.skill = skills;
+    public void setUserSkill(Set<UserSkill> userSkill) {
+        this.userSkill = userSkill;
     }
 
     public Set<Project> getProject(){
