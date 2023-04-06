@@ -23,19 +23,19 @@ public class JobServiceImpl implements IJobService {
 
     @Override
     public Job Get(Integer id) {
-        return iJobRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Data Employee Tidak Ditemukan"));
+        return iJobRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Data Job Tidak Ditemukan"));
     }
 
     @Override
     public Boolean Save(Job job) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'Save'");
+        iJobRepository.save(job);
+        return iJobRepository.findById(job.getId()).isPresent();
     }
 
     @Override
     public Boolean Delete(Integer id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'Delete'");
+        iJobRepository.deleteById(id);
+        return !iJobRepository.findById(id).isPresent();
     }
     
 }
