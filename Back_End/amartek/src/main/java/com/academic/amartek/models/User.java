@@ -7,8 +7,7 @@ import javax.persistence.*;
 @Table(name = "tb_m_user")
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private String id;
 
     @Column(name ="password", nullable = false)
     private String password;
@@ -35,11 +34,20 @@ public class User {
     @OneToOne(mappedBy = "user")
     private Recruitment recruitment;
 
-    public Integer getId(){
+    public User() {
+        
+    }
+
+    public User( String email, String password) {
+        this.email = email;
+        this.password = password;
+    }
+
+    public String getId(){
         return id;
     }
 
-    public void setId(Integer id){
+    public void setId(String id){
         this.id = id;
     }
 
