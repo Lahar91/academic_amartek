@@ -24,11 +24,11 @@ public class Recruitment {
     private int job_id;
     
     
-    // fk
+    // fks
 
     @OneToOne
     @JoinColumn(name="id", nullable = false)
-    private Users user;
+    private User user;
     
     @OneToOne
     @JoinColumn(name="id", nullable = false)
