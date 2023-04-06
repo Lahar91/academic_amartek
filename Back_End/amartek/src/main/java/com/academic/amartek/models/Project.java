@@ -18,8 +18,9 @@ public class Project {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name ="user_id")
-    private String user_id;
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;    
 
     @Column(name ="name")
     private String name;
@@ -31,52 +32,55 @@ public class Project {
     private Date project_end;
 
     @Column(name = "project_desc")
-    private Date project_desc;
+    private String project_desc;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
-    private User user;
 
-    public String getUserId() {
-        return user_id;
+    public Integer getId() {
+        return id;
     }
-    public void setUserId(String user_id) {
-        this.user_id = user_id;
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public String getName() {
         return name;
     }
+
     public void setName(String name) {
         this.name = name;
     }
 
-    public Date getProjectStart() {
+    public Date getProject_start() {
         return project_start;
     }
-    public void setProjectStart(Date project_start) {
+
+    public void setProject_start(Date project_start) {
         this.project_start = project_start;
     }
 
-    public Date getProjectEnd() {
+    public Date getProject_end() {
         return project_end;
     }
-    public void setProjectEnd(Date project_end) {
+
+    public void setProject_end(Date project_end) {
         this.project_end = project_end;
     }
 
-    public Date getProjectDesc() {
+    public String getProject_desc() {
         return project_desc;
     }
-    public void setProjectDesc(Date project_desc) {
+
+    public void setProject_desc(String project_desc) {
         this.project_desc = project_desc;
     }
     
-    public User getuser(){
-        return user;
-    }
-        
-    public void setuser(User user){
-        this.user = user;
-    }
 }

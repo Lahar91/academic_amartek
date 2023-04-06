@@ -17,7 +17,7 @@ public class Biodata {
     @Column(name = "fullname")
     private String fullname;
     
-    @Column(name = "datebirth")
+    @Column(name = "birth_date")
     private Date datebirth;
 
     @Column(name = "address")
