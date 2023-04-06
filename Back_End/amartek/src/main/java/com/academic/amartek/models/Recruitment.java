@@ -24,11 +24,11 @@ public class Recruitment {
     private int job_id;
     
     
-    // fk
+    // fks
 
     @OneToOne
     @JoinColumn(name="id", nullable = false)
-    private Users user;
+    private User user;
     
     @OneToOne
     @JoinColumn(name="id", nullable = false)
@@ -40,7 +40,7 @@ public class Recruitment {
     @Column(name="status_trainer")
     private String statustrainer;
     
-    @Column(name="data_interview_hr")
+    @Column(name="date_interview_hr")
     private Date dateinterviewhr;
   
 

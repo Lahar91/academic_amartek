@@ -9,11 +9,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
+// apii
 @Entity
 @Table(name="tb_m_skill")
 public class Skill {
-    @Id
+    @Id    
     @GeneratedValue (strategy = GenerationType.IDENTITY) 
     private Integer id;
 
@@ -23,4 +23,28 @@ public class Skill {
     // penghubung ke FK
     @OneToMany(mappedBy = "skill")
     public Set<UserSkill> userSkill;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getSkillName() {
+        return skillName;
+    }
+
+    public void setSkillName(String skillName) {
+        this.skillName = skillName;
+    }
+
+    public Set<UserSkill> getUserSkill() {
+        return userSkill;
+    }
+
+    public void setUserSkill(Set<UserSkill> userSkill) {
+        this.userSkill = userSkill;
+    }
 }

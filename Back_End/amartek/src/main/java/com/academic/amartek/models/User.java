@@ -5,36 +5,34 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "tb_m_user")
-public class Users {
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @Column(name = "email", nullable = false)
+    private String email;
+
     @Column(name ="password", nullable = false)
     private String password;
-
-    @Column(name = "email")
-    private String email;
 
     @ManyToOne
     @JoinColumn(name = "role_id", nullable = false)
     private Role role;
 
-    @OneToMany(mappedBy = "id")
-    public Set<Skill> skills;
+    @OneToMany(mappedBy = "user")
+    public Set<UserSkill> userSkill;
 
-    @OneToMany(mappedBy = "id")
+    @OneToMany(mappedBy = "user")
     public Set<Project> project;
 
-    @OneToMany(mappedBy = "id")
+    @OneToMany(mappedBy = "user")
     public Set<Education> education;
 
-    @OneToOne
-    @JoinColumn(name = "id", nullable = false)
+    @OneToOne (mappedBy = "user")
     private Biodata biodata;
 
-    @OneToOne
-    @JoinColumn(name = "id", nullable = false)
+    @OneToOne(mappedBy = "user")
     private Recruitment recruitment;
 
     public Integer getId(){
@@ -68,12 +66,12 @@ public class Users {
         this.role = role;
     }
 
-    public Set<Skill> getSkill(){
-        return skill;
+    public Set<UserSkill> getUserSkill() {
+        return userSkill;
     }
 
-    public void setSkill(Set<Skill> skills){
-        this.skills = skills;
+    public void setUserSkill(Set<UserSkill> userSkill) {
+        this.userSkill = userSkill;
     }
 
     public Set<Project> getProject(){
@@ -105,7 +103,7 @@ public class Users {
     }
 
     public void setRecruitment(Recruitment recruiment) {
-        this.requiment = requiment;
+        this.recruitment = recruiment;
     }
 
 }

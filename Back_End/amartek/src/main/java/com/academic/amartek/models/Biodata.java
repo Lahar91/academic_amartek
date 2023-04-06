@@ -2,12 +2,7 @@ package com.academic.amartek.models;
 
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
-import javax.persistence.JoinColumn;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "tb_m_biodata")
@@ -17,12 +12,12 @@ public class Biodata {
 
     @OneToOne
     @JoinColumn(name="id", nullable = false)
-    private Users user;
+    private User user;
 
     @Column(name = "fullname")
     private String fullname;
     
-    @Column(name = "datebirth")
+    @Column(name = "birth_date")
     private Date datebirth;
 
     @Column(name = "address")
