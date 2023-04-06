@@ -2,7 +2,7 @@ package com.academic.amartek.models;
 
 import java.util.Set;
 import javax.persistence.*;
-
+//test
 @Entity
 @Table(name = "tb_m_user")
 public class User {
