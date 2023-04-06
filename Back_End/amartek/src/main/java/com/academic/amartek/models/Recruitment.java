@@ -25,11 +25,11 @@ public class Recruitment {
     
     
     // fk
+
     @OneToOne
     @JoinColumn(name="id", nullable = false)
     private Users user;
     
-    fk
     @OneToOne
     @JoinColumn(name="id", nullable = false)
     private Job job;

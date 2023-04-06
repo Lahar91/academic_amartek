@@ -14,8 +14,6 @@ import javax.persistence.Table;
 public class Biodata {
     @Id
     private Integer id;
-    
-    // FK
 
     @OneToOne
     @JoinColumn(name="id", nullable = false)
