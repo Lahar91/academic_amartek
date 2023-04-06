@@ -1,5 +1,6 @@
 package com.academic.amartek.models;
 
+<<<<<<< HEAD
 import java.util.Set;
 import javax.persistence.*;
 
@@ -108,4 +109,8 @@ public class Users {
         this.requiment = requiment;
     }
 
+=======
+public class users {
+    //
+>>>>>>> origin/ilham
 }
