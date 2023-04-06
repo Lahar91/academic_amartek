@@ -2,12 +2,16 @@ package com.academic.amartek.models;
 
 import java.util.Set;
 import javax.persistence.*;
-//test
+import java.util.UUID;
+
+
 @Entity
 @Table(name = "tb_m_user")
 public class User {
     @Id
-    private String id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id", updatable = false, nullable = false)
+    private UUID id;
 
     @Column(name ="password", nullable = false)
     private String password;
@@ -44,11 +48,11 @@ public class User {
     }
 
     public String getId(){
-        return id;
+        return id.toString();
     }
 
     public void setId(String id){
-        this.id = id;
+        this.id = UUID.fromString(id);
     }
 
     public String getEmail() {
@@ -74,11 +78,11 @@ public class User {
         this.role = role;
     }
 
-    public Set<UserSkill> getUserSkill() {
+    public Set<UserSkill> getUserSkill(){
         return userSkill;
     }
 
-    public void setUserSkill(Set<UserSkill> userSkill) {
+    public void setUserSkill(Set<UserSkill> userSkill){
         this.userSkill = userSkill;
     }
 
@@ -110,8 +114,8 @@ public class User {
         return recruitment;
     }
 
-    public void setRecruitment(Recruitment recruiment) {
-        this.recruitment = recruiment;
+    public void setRecruitment(Recruitment recruitment) {
+        this.recruitment = recruitment;
     }
 
 }

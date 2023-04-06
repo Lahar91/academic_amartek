@@ -1,7 +1,6 @@
 package com.academic.amartek.models;
 
 import java.sql.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -72,11 +71,11 @@ public class Project {
         this.project_desc = project_desc;
     }
     
-    public User getuser(){
+    public User getUser(){
         return user;
     }
         
-    public void setuser(User user){
+    public void setUser(User user){
         this.user = user;
     }
 }

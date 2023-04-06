@@ -1,9 +1,6 @@
 package com.academic.amartek.models;
-
 import javax.persistence.GenerationType;
-
 import java.util.Set;
-
 import javax.persistence.*;
 
 @Entity
@@ -19,10 +16,6 @@ public class Role {
     @OneToMany(mappedBy = "Role")
     public Set<User> user;
 
-    public Role() {
-        
-    }
-
     public Integer getId() {
         return id;
     }
@@ -35,10 +28,10 @@ public class Role {
     public void setName(String name) {
         this.name = name;
     }
-    public Set<User> getUsers() {
+    public Set<User> getUser() {
         return user;
     }
-    public void setUsers(Set<User> user) {
+    public void setUser(Set<User> user) {
         this.user = user;
     }
 }
