@@ -27,7 +27,7 @@ public class Recruitment {
     // fks
 
     @OneToOne
-    @JoinColumn(name="id", nullable = false)
+    @JoinColumn(name="user_id", nullable = false)
     private User user;
     
     @OneToOne
@@ -40,7 +40,7 @@ public class Recruitment {
     @Column(name="status_trainer")
     private String statustrainer;
     
-    @Column(name="data_interview_hr")
+    @Column(name="date_interview_hr")
     private Date dateinterviewhr;
   
 

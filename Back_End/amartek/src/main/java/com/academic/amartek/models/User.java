@@ -2,17 +2,19 @@ package com.academic.amartek.models;
 
 import java.util.Set;
 import javax.persistence.*;
-import java.util.UUID;
+import org.hibernate.annotations.GenericGenerator;
+
+
 
 
 @Entity
 @Table(name = "tb_m_user")
 public class User {
-
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", updatable = false, nullable = false)
-    private UUID id;
+    @GeneratedValue(generator = "custom-id")
+    @GenericGenerator(name = "custom-id", strategy = "com.academic.amartek.config.CustomIdGenerator")
+    @Column(name = "id", updatable = false, unique = true, nullable = false, length = 20)
+    private String id;
 
     @Column(name ="password", nullable = false)
     private String password;
@@ -48,12 +50,12 @@ public class User {
         this.password = password;
     }
 
-    public UUID getId(){
+    public String getId(){
         return id;
     }
 
     public void setId(String id){
-        this.id = UUID.fromString(id);
+        this.id = id;
     }
 
     public String getEmail() {

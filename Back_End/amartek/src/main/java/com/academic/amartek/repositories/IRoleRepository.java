@@ -6,5 +6,5 @@ import com.academic.amartek.models.Role;
 
 @Repository
 public interface IRoleRepository extends JpaRepository<Role, String>{
-    Role findByName(String name);
+    Role findByName(String role);
 }

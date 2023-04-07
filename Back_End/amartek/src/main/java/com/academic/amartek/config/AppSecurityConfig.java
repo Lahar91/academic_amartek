@@ -35,25 +35,26 @@ public class AppSecurityConfig {
      // authorization
      @Bean
      public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
-         httpSecurity.csrf().disable();
-    //              .authorizeRequests((auth) -> {
-    //                  try {
-    //                      auth
-    //                              .antMatchers("/user/**").permitAll()
-    //                              .antMatchers("/role/**", "/employee/**, /dashboard/**").hasAuthority("QA")
-    //                              .anyRequest().authenticated()
-    //                              .and()
-    //                              .formLogin()
-    //                              .loginPage("/user/login")
-    //                              .usernameParameter("email")
-    //                              .and()
-    //                              .httpBasic()
-    //                              .and()
-    //                              .logout();
-    //                  } catch (Exception ex) {
-    //                      throw new RuntimeException(ex);
-    //                  }
-    //              });
+         httpSecurity.csrf().disable()
+                 .authorizeRequests((auth) -> {
+                     try {
+                         auth
+                                 .antMatchers("/user/**").permitAll()
+                                 .antMatchers("/api/**").permitAll()
+                                 .antMatchers("/role/**", "/employee/**, /dashboard/**").hasAuthority("QA")
+                                 .anyRequest().authenticated()
+                                 .and()
+                                 .formLogin()
+                                 .loginPage("/user/login")
+                                 .usernameParameter("email")
+                                 .and()
+                                 .httpBasic()
+                                 .and()
+                                 .logout();
+                     } catch (Exception ex) {
+                         throw new RuntimeException(ex);
+                     }
+                 });
          return httpSecurity.build();
      }
 }

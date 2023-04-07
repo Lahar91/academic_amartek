@@ -1,77 +1,72 @@
 package com.academic.amartek.controllers;
 
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.academic.amartek.models.Role;
 import com.academic.amartek.models.User;
-import com.academic.amartek.repositories.IRoleRepository;
-import com.academic.amartek.repositories.IUserRepository;
+import com.academic.amartek.services.IUserService;
 
 @RestController
 @RequestMapping("api")
 public class RestUserController {
-
     @Autowired
-    private IUserRepository userRepository;
+    private IUserService userService;
 
-    @Autowired
-    private IRoleRepository roleRepository;
-
-    @Autowired
-    private PasswordEncoder passwordEncoder;
-
-    @GetMapping("roles")
-    public List<Role> getAllRoles(){
-        return roleRepository.findAll();
+    @PostMapping("auth/register")
+    public ResponseEntity<Object> registerUser(@RequestBody User user) {
+        return userService.registerUser(user);
     }
 
-    @PostMapping("register")
-    public ResponseEntity<String> registerUser(@RequestBody User user){
-        try {
-            if(userRepository.existsByEmail(user.getEmail())){
-                return ResponseEntity.badRequest().body("Email Already Exists!");
-            }
-    
-            user.setPassword(passwordEncoder.encode(user.getPassword()));
-    
-            Role role = roleRepository.findByName("Admin");
-            user.setRole(role);
-    
-            userRepository.save(user);
-    
-            return ResponseEntity.ok("User Successfully Registered");
-        } catch (Exception e) {
-            // TODO: handle exception
-            return ResponseEntity.badRequest().body(e.getMessage());
-        }
-        
-
+    @PostMapping("auth/login")
+    public ResponseEntity<Object> loginUser(@RequestBody User user) {
+        return userService.loginUser(user);
     }
 
-    @PostMapping("login")
-    public  ResponseEntity<String> loginUser(@RequestBody User user){
-        if(!userRepository.existsByEmail(user.getEmail())){
-            return ResponseEntity.badRequest().body("User Not Found");
-        }
-
-        User dbUser = userRepository.findByEmail(user.getEmail());
-
-        if(!passwordEncoder.matches(user.getPassword(), dbUser.getPassword())){
-            return ResponseEntity.badRequest().body("Incorrect Password");
-        }
-
-        return ResponseEntity.ok("Berhasil Login");
+    @GetMapping("users/{id}")
+    public ResponseEntity<Object> getUserById(@PathVariable String id) {
+        return userService.getUserById(id);
     }
+
+    @GetMapping("users")
+    public ResponseEntity<Object> getAllUsers() {
+        List<User> user = userService.getAllUsers();
+        Map<String, Object> customResponse = new HashMap<String, Object>();
+        customResponse.put("statusCode", HttpStatus.OK.value());
+        customResponse.put("message","Data Berhasil di ambil");
+        customResponse.put("data", user);
+        return new ResponseEntity<>(customResponse, HttpStatus.OK);
+        // return userService.getAllUsers();
+    }
+
+    @PutMapping("users/{id}")
+    public ResponseEntity<Object> updateUser(@PathVariable String id, @RequestBody User user) {
+        user.setId(id);
+        return userService.updateUser(user);
+    }
+
+    @DeleteMapping("users/{id}")
+    public ResponseEntity<Object> deleteUser(@PathVariable String id) {
+        userService.deleteUser(id);
+        Map<String, Object> customResponse = new HashMap<String, Object>();
+        customResponse.put("statusCode", HttpStatus.OK.value());
+        customResponse.put("message","Data berhasil di hapus");
+        // customResponse.put("data", user);
+        return new ResponseEntity<>(customResponse, HttpStatus.OK);
+    }
+   
 }
 
