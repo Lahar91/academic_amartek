@@ -2,7 +2,7 @@ package com.academic.amartek.models;
 
 import java.util.Set;
 import javax.persistence.*;
-//test
+
 @Entity
 @Table(name = "tb_m_user")
 public class User {
@@ -10,11 +10,11 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @Column(name = "email", nullable = false)
+    private String email;
+
     @Column(name ="password", nullable = false)
     private String password;
-
-    @Column(name = "email")
-    private String email;
 
     @ManyToOne
     @JoinColumn(name = "role_id", nullable = false)
