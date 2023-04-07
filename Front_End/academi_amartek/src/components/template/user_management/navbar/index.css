@@ -1,0 +1,87 @@
+/* container navbar */
+.navbar{
+  width: 1200px;
+  margin: 0 auto;
+  padding: 20px 0 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* logo app */
+.navbar .nav-logo img{
+  width: 200px;
+}
+
+/* navbar link */
+.navbar .nav-link{
+  display: flex;
+  width: 550px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* navbar link container */
+.navbar .nav-link ul {
+  display: flex;
+  width: 270px;
+  justify-content: space-between;
+}
+
+/* navbar link unit */
+.navbar .nav-link ul li {
+  list-style-type: none;
+  font-size: 1em;
+}
+
+/* navbar link href */
+.navbar .nav-link ul li a {
+  padding: 25px 10px 25px 10px;
+  color: black;
+  text-decoration: none;
+  transition: .3s;
+}
+
+/* navbar link href ketika di hover */
+.navbar .nav-link ul li a:hover{
+  color: var(--hover-color);
+  text-decoration: underline;
+  text-decoration-color: black;
+}
+
+/* navbar link button container */
+.navbar .nav-link .nav-button{
+  display: flex;
+  width: 250px;
+  justify-content: space-between;
+}
+
+/* navbar link button unit */
+.navbar .nav-link .nav-button button{
+  padding: 8px 35px 8px 35px;
+  background-color: var(--main-color);
+  border: 1px solid var(--main-color);
+  cursor: pointer;
+  color: white;
+  font-size: .9em;
+  border-radius: 5px;
+  outline: none;
+  transition: .3s;
+}
+
+/* navbar link button unit ketika di hover */
+.navbar .nav-link .nav-button button:hover{
+  background-color: white;
+  color: var(--main-color);
+  border: 1px solid var(--main-color);
+}
+
+/* sticky navbar ketika di scroll */
+.sticky-nav {
+  position: fixed;
+  top: 0;
+  padding: 0 30px 10px 30px;
+  background-color: white;
+  width: 100%;
+  box-shadow: 0px 2px 25px rgba(157, 157, 157, 0.3);
+}
