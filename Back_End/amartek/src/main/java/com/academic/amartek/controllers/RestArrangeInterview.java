@@ -1,14 +1,50 @@
 package com.academic.amartek.controllers;
 
+import java.util.List;
+
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController("api")
+import com.academic.amartek.dto.Response;
+import com.academic.amartek.dto.ResponseHandler;
+import com.academic.amartek.models.Recruitment;
+import com.academic.amartek.services.IArrangeInterviewService;
+
+@CrossOrigin()
+@RestController
+@RequestMapping("api")
 public class RestArrangeInterview {
+    private IArrangeInterviewService iArrangeInterviewService;
 
     @GetMapping("interview")
     public ResponseEntity<Object> Get() {
-        
+        List<Recruitment> recruitment = iArrangeInterviewService.GetAll();
+        return ResponseHandler.generateResponse("Data di update", HttpStatus.OK, recruitment);
     }
+
+    @GetMapping("interview/{id}")
+    public Recruitment Get(@PathVariable(required = true) Integer id) {
+        Recruitment recruitment = iArrangeInterviewService.Get(id);
+        return recruitment;
+    }
+
+    @PutMapping("interview/{id}")
+    public ResponseEntity<Object> Save(@RequestBody Recruitment recruitment, @PathVariable(required = true) Integer id) {
+        Recruitment setrecruitment = iArrangeInterviewService.Get(id);
+        setrecruitment.setDate_interview_hr(recruitment.getDate_interview_hr());
+        if (setrecruitment.getDate_interview_hr() != null) {
+            return Response.generateResponse("Data di update", HttpStatus.OK);
+
+        }else{
+            return Response.generateResponse("Data gagal di update", HttpStatus.BAD_REQUEST);
+        }
+    }
+
 }
