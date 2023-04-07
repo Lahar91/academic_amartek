@@ -17,9 +17,6 @@ public class Project {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name ="user_id")
-    private String user_id;
-
     @Column(name ="name")
     private String name;
 
@@ -36,11 +33,12 @@ public class Project {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
+
     public String getUserId() {
-        return user_id;
+        return user.toString();
     }
-    public void setUserId(String user_id) {
-        this.user_id = user_id;
+    public void setUserId(User user) {
+        this.user = user;
     }
 
     public String getName() {

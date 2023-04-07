@@ -9,6 +9,6 @@ public class RestArrangeInterview {
 
     @GetMapping("interview")
     public ResponseEntity<Object> Get() {
-        
+        return null;
     }
 }

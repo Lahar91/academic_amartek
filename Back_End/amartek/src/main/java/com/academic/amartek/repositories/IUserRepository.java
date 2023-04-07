@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 import com.academic.amartek.models.User;
 
 @Repository
-public interface IUserRepository <User, String>{
-    User findByPassword(String Oldpassword);
+public interface IUserRepository extends JpaRepository<User, String>{
+    boolean existsByEmail(String email);
+    User findByEmail(String email);
 }

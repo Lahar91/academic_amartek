@@ -8,6 +8,7 @@ import java.util.UUID;
 @Entity
 @Table(name = "tb_m_user")
 public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", updatable = false, nullable = false)
@@ -47,8 +48,8 @@ public class User {
         this.password = password;
     }
 
-    public String getId(){
-        return id.toString();
+    public UUID getId(){
+        return id;
     }
 
     public void setId(String id){

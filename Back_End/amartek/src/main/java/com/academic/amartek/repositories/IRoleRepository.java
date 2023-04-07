@@ -5,6 +5,6 @@ import org.springframework.stereotype.Repository;
 import com.academic.amartek.models.Role;
 
 @Repository
-public interface IRoleRepository extends JpaRepository<Role, Integer>{
-    
+public interface IRoleRepository extends JpaRepository<Role, String>{
+    Role findByName(String name);
 }
