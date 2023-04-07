@@ -8,7 +8,7 @@ import javax.persistence.*;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private String id;
 
     @Column(name ="password", nullable = false)
     private String password;
@@ -21,13 +21,13 @@ public class User {
     private Role role;
 
     @OneToMany(mappedBy = "user")
-    public Set<Skill> skill;
+    public Set<UserSkill> userskill;
 
-    @OneToMany(mappedBy = "user")
-    public Set<Project> project;
+    // @OneToMany(mappedBy = "user")
+    // public Set<Project> project;
 
-    @OneToMany(mappedBy = "user")
-    public Set<Education> education;
+    // @OneToMany(mappedBy = "user")
+    // public Set<Education> education;
 
     @OneToOne (mappedBy = "user")
     private Biodata biodata;
@@ -35,11 +35,11 @@ public class User {
     @OneToOne(mappedBy = "user")
     private Recruitment recruitment;
 
-    public Integer getId(){
+    public String getId(){
         return id;
     }
 
-    public void setId(Integer id){
+    public void setId(String id){
         this.id = id;
     }
 
@@ -66,29 +66,29 @@ public class User {
         this.role = role;
     }
 
-    public Set<Skill> getSkill(){
-        return skill;
+    public Set<UserSkill> getUserskill() {
+        return userskill;
     }
 
-    public void setSkill(Set<Skill> skills){
-        this.skill = skills;
+    public void setUserskill(Set<UserSkill> userskill) {
+        this.userskill = userskill;
     }
 
-    public Set<Project> getProject(){
-        return project;
-    }
+    // public Set<Project> getProject(){
+    //     return project;
+    // }
 
-    public void setProject(Set<Project> project){
-        this.project = project;
-    }
+    // public void setProject(Set<Project> project){
+    //     this.project = project;
+    // }
 
-    public Set<Education> getEducation(){
-        return education;
-    }
+    // public Set<Education> getEducation(){
+    //     return education;
+    // }
 
-    public void setEducation (Set<Education> education){
-        this.education = education;
-    }
+    // public void setEducation (Set<Education> education){
+    //     this.education = education;
+    // }
 
     public Biodata getBiodata() {
         return biodata;

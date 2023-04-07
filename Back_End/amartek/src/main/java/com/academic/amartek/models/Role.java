@@ -16,8 +16,8 @@ public class Role {
     @Column(name = "name")
     private String name;
 
-    @OneToMany(mappedBy = "Role")
-    public Set<User> user;
+    // @OneToMany(mappedBy = "Role")
+    // public Set<User> user;
 
     public Integer getId() {
         return id;
@@ -31,10 +31,10 @@ public class Role {
     public void setName(String name) {
         this.name = name;
     }
-    public Set<User> getUsers() {
-        return user;
-    }
-    public void setUsers(Set<User> user) {
-        this.user = user;
-    }
+    // public Set<User> getUsers() {
+    //     return user;
+    // }
+    // public void setUsers(Set<User> user) {
+    //     this.user = user;
+    // }
 }

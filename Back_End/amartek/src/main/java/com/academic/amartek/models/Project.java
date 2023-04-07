@@ -19,10 +19,18 @@ public class Project {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
-    @Column(name ="user_id")
-    private String user_id;
-
+    
+    // @ManyToOne
+    // @JoinColumn(name = "user_id", nullable = false)
+    // private User user;
+    @Column(name = "user_id")
+    private String userId;
+    public String getUserId() {
+        return userId;
+    }
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
     @Column(name ="name")
     private String name;
 
@@ -35,16 +43,6 @@ public class Project {
     @Column(name = "project_desc")
     private Date project_desc;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
-    private User user;
-
-    public String getUserId() {
-        return user_id;
-    }
-    public void setUserId(String user_id) {
-        this.user_id = user_id;
-    }
 
     public String getName() {
         return name;
@@ -74,11 +72,11 @@ public class Project {
         this.project_desc = project_desc;
     }
     
-    public User getuser(){
-        return user;
-    }
+    // public User getuser(){
+    //     return user;
+    // }
         
-    public void setuser(User user){
-        this.user = user;
-    }
+    // public void setuser(User user){
+    //     this.user = user;
+    // }
 }

@@ -40,7 +40,7 @@ public class AppSecurityConfig {
                  .authorizeRequests((auth) -> {
                      try {
                          auth
-                                 .antMatchers("/user/**").permitAll()
+                                 .antMatchers("/api/**").permitAll()
                                  .antMatchers("/role/**", "/employee/**, /dashboard/**").hasAuthority("QA")
                                  .anyRequest().authenticated()
                                  .and()

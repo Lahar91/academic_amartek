@@ -20,8 +20,8 @@ public class Major {
     @Column(name = "major_name")
     private String majorName;
 
-    @OneToMany(mappedBy = "major")
-    private Set<Education> education;
+    // @OneToMany(mappedBy = "major")
+    // private Set<Education> education;
 
     public Integer getId() {
         return id;
@@ -39,13 +39,13 @@ public class Major {
         this.majorName = majorName;
     }
 
-    public Set<Education> getEducation() {
-        return education;
-    }
+    // public Set<Education> getEducation() {
+    //     return education;
+    // }
 
-    public void setEducation(Set<Education> education) {
-        this.education = education;
-    }
+    // public void setEducation(Set<Education> education) {
+    //     this.education = education;
+    // }
 
 
     
