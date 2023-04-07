@@ -2,6 +2,8 @@
 import "./index.css";
 import { useState, useEffect } from "react";
 
+// test
+
 function Navbar() {
 	// state buat bikin sticky navbar ketika di scroll
 	const [stickyClass, setStickyClass] = useState("");
