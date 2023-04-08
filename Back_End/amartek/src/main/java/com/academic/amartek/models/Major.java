@@ -47,6 +47,4 @@ public class Major {
         this.education = education;
     }
 
-
-    
 }

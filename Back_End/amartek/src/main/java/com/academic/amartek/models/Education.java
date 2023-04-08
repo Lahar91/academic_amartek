@@ -82,6 +82,5 @@ public class Education {
     public void setMajor(Major major) {
         this.major = major;
     }
-
     
 }

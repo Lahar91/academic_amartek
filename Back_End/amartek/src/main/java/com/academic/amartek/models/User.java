@@ -7,8 +7,7 @@ import javax.persistence.*;
 @Table(name = "tb_m_user")
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private String id;
 
     @Column(name = "email", nullable = false)
     private String email;
@@ -32,37 +31,44 @@ public class User {
     @OneToOne (mappedBy = "user")
     private Biodata biodata;
 
-    @OneToOne(mappedBy = "user")
-    private Recruitment recruitment;
+    @OneToOne(mappedBy = "applicant")
+    private Recruitment applicat;
 
-    public Integer getId(){
+    @OneToOne(mappedBy = "trainer")
+    private Recruitment trainer;
+
+    @OneToOne(mappedBy = "hr")
+    private Recruitment hr;
+
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id){
+    public void setId(String id) {
         this.id = id;
     }
 
     public String getEmail() {
         return email;
     }
+
     public void setEmail(String email) {
         this.email = email;
     }
 
-    public String getPassword(){
+    public String getPassword() {
         return password;
     }
 
-    public void setPassword(String password){
+    public void setPassword(String password) {
         this.password = password;
     }
 
-    public Role getRole(){
+    public Role getRole() {
         return role;
     }
 
-    public void setRole(Role role){
+    public void setRole(Role role) {
         this.role = role;
     }
 
@@ -74,19 +80,19 @@ public class User {
         this.userSkill = userSkill;
     }
 
-    public Set<Project> getProject(){
+    public Set<Project> getProject() {
         return project;
     }
 
-    public void setProject(Set<Project> project){
+    public void setProject(Set<Project> project) {
         this.project = project;
     }
 
-    public Set<Education> getEducation(){
+    public Set<Education> getEducation() {
         return education;
     }
 
-    public void setEducation (Set<Education> education){
+    public void setEducation(Set<Education> education) {
         this.education = education;
     }
 
@@ -98,12 +104,28 @@ public class User {
         this.biodata = biodata;
     }
 
-    public Recruitment getRecruitment() {
-        return recruitment;
+    public Recruitment getApplicat() {
+        return applicat;
     }
 
-    public void setRecruitment(Recruitment recruiment) {
-        this.recruitment = recruiment;
+    public void setApplicat(Recruitment applicat) {
+        this.applicat = applicat;
+    }
+
+    public Recruitment getTrainer() {
+        return trainer;
+    }
+
+    public void setTrainer(Recruitment trainer) {
+        this.trainer = trainer;
+    }
+
+    public Recruitment getHr() {
+        return hr;
+    }
+
+    public void setHr(Recruitment hr) {
+        this.hr = hr;
     }
 
 }
