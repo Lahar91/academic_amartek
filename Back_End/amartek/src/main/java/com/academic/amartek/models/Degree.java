@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "tb_m_degree")
 public class Degree {
@@ -46,5 +48,24 @@ public class Degree {
     public void setEducation(Set<Education> education) {
         this.education = education;
     }
+
+   
+
+    // public Set<Education> getEducation() {
+    //     return education;
+    // }
+
+    // public void setEducation(Set<Education> education) {
+    //     this.education = education;
+    // }
+    
+
+    // public Set<Education> getEducation() {
+    //     return education;
+    // }
+
+    // public void setEducation(Set<Education> education) {
+    //     this.education = education;
+    // }
     
 }
