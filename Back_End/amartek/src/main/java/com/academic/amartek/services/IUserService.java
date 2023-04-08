@@ -4,6 +4,8 @@ import com.academic.amartek.models.User;
 
 import java.util.List;
 
+import javax.persistence.EntityManager;
+
 import org.springframework.http.ResponseEntity;
 
 public interface IUserService {

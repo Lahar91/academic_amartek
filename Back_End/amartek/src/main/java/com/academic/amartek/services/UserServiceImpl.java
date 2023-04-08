@@ -13,8 +13,16 @@ import org.springframework.stereotype.Service;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
+
+import javax.persistence.EntityManager;
+import javax.transaction.Transactional;
+
 @Service
 public class UserServiceImpl implements IUserService {
+
+    @Autowired
+    private EntityManager entityManager;
 
     @Autowired
     private IUserRepository userRepository;
@@ -26,6 +34,7 @@ public class UserServiceImpl implements IUserService {
     private PasswordEncoder passwordEncoder;
 
     @Override
+    @Transactional
     public ResponseEntity<Object> registerUser(User user) {
         if(userRepository.existsByEmail(user.getEmail())){
             Map<String, Object> customResponse = new HashMap<String, Object>();
@@ -42,7 +51,9 @@ public class UserServiceImpl implements IUserService {
         }
         user.setRole(role);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        userRepository.save(user);
+        user.setId("USR");
+        entityManager.persist(user);
+        // userRepository.save(user);
         Map<String, Object> customResponse = new HashMap<String, Object>();
         customResponse.put("statusCode", HttpStatus.OK.value());
         customResponse.put("message", "User Successfully Registered");
@@ -144,8 +155,9 @@ public class UserServiceImpl implements IUserService {
 
     @Override
     public ResponseEntity<Object> getUserById(String id) {
-        User foundUser = userRepository.findById(id).orElse(null);
-        if(foundUser == null){
+        Optional<User> foundUser = userRepository.findActiveUserById(id);
+        // User foundUser = userRepository.findById(id).orElse(null);
+        if(foundUser.isEmpty()){
             Map<String, Object> response = new HashMap<>();
             response.put("message", "User not found");
             response.put("status", HttpStatus.NOT_FOUND);
@@ -160,7 +172,9 @@ public class UserServiceImpl implements IUserService {
 
     @Override
     public List<User> getAllUsers() {
+        List<User> activeUsers = userRepository.findAllActiveUsers();
         // Add business logic and validation code here
-        return userRepository.findAll();
+        return activeUsers;
+        // return userRepository.findAll();
     }
 }

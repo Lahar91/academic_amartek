@@ -2,7 +2,6 @@ package com.academic.amartek.models;
 
 import java.util.Set;
 import javax.persistence.*;
-import org.hibernate.annotations.GenericGenerator;
 
 
 
@@ -11,11 +10,8 @@ import org.hibernate.annotations.GenericGenerator;
 @Table(name = "tb_m_user")
 public class User {
     @Id
-    @GeneratedValue(generator = "custom-id")
-    @GenericGenerator(name = "custom-id", strategy = "com.academic.amartek.config.CustomIdGenerator")
-    @Column(name = "id", updatable = false, unique = true, nullable = false, length = 20)
     private String id;
-
+  
     @Column(name ="password", nullable = false)
     private String password;
 
@@ -45,7 +41,7 @@ public class User {
         
     }
 
-    public User( String email, String password) {
+    public User(String email, String password) {
         this.email = email;
         this.password = password;
     }
