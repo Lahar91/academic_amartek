@@ -7,8 +7,7 @@ import javax.persistence.*;
 @Table(name = "tb_m_user")
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private String id;
 
     @Column(name = "email", nullable = false)
     private String email;
@@ -32,14 +31,48 @@ public class User {
     @OneToOne (mappedBy = "user")
     private Biodata biodata;
 
-    @OneToOne(mappedBy = "user")
-    private Recruitment recruitment;
 
-    public Integer getId(){
+    @OneToOne(mappedBy = "applicat")
+    private Recruitment applicat;
+
+    @OneToOne(mappedBy = "hr")
+    private Recruitment hr;
+
+    @OneToOne(mappedBy = "trainer")
+    private Recruitment trainer;
+
+    
+    public Recruitment getTrainer() {
+        return trainer;
+    }
+
+    public void setTrainer(Recruitment trainer) {
+        this.trainer = trainer;
+    }
+
+    public Recruitment getApplicat() {
+        return applicat;
+    }
+
+    public void setApplicat(Recruitment applicat) {
+        this.applicat = applicat;
+    }
+
+
+
+    public Recruitment getHr() {
+        return hr;
+    }
+
+    public void setHr(Recruitment hr) {
+        this.hr = hr;
+    }
+
+    public String getId(){
         return id;
     }
 
-    public void setId(Integer id){
+    public void setId(String id){
         this.id = id;
     }
 
@@ -98,12 +131,5 @@ public class User {
         this.biodata = biodata;
     }
 
-    public Recruitment getRecruitment() {
-        return recruitment;
-    }
-
-    public void setRecruitment(Recruitment recruiment) {
-        this.recruitment = recruiment;
-    }
 
 }

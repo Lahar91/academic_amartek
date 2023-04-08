@@ -4,12 +4,16 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 @Table(name="tb_tr_recruitment")
@@ -18,21 +22,53 @@ public class Recruitment {
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
     private int id;
 
-    private int applicant_id;
-    private int hr_id;
-    private int trainer_id;
-    private int job_id;
-    
-    
+
     // fks
 
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="applicant_id", nullable = false)
+    private User applicat;
+
+    public User getApplicat() {
+        return applicat;
+    }
+    public void setApplicat(User applicat) {
+        this.applicat = applicat;
+    }
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="hr_id", nullable = false)
+    private User hr;
+
+    public User getHr() {
+        return hr;
+    }
+    public void setHr(User hr) {
+        this.hr = hr;
+    }
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="trainer_id", nullable = false)
+    private User trainer;
+
+
+    public User getTrainer() {
+        return trainer;
+    }
+    public void setTrainer(User trainer) {
+        this.trainer = trainer;
+    }
+
     @OneToOne
-    @JoinColumn(name="id", nullable = false)
-    private User user;
-    
-    @OneToOne
-    @JoinColumn(name="id", nullable = false)
+    @JoinColumn(name="job_id", nullable = false)
     private Job job;
+
+    // public Job getJob() {
+    //     return job;
+    // }
+    // public void setJob(Job job) {
+    //     this.job = job;
+    // }
 
     @Column(name="date_interview_trainer")
     private Date dateinterviewtrainer;
@@ -56,31 +92,7 @@ public class Recruitment {
     public void setId(int id) {
         this.id = id;
     }
-    public int getApplicant_id() {
-        return applicant_id;
-    }
-    public void setApplicant_id(int applicant_id) {
-        this.applicant_id = applicant_id;
-    }
-    public int getHr_id() {
-        return hr_id;
-    }
-    public void setHr_id(int hr_id) {
-        this.hr_id = hr_id;
-    }
-    public int gettrainer_id() {
-        return trainer_id;
-    }
-    public void settrainer_id(int trainer_id) {
-        this.trainer_id = trainer_id;
-    }
-    public int getJob_id() {
-        return job_id;
-    }
-    public void setJob_id(int job_id) {
-        this.job_id = job_id;
-    }
-    
+   
     public Date getDateinterviewtrainer() {
         return dateinterviewtrainer;
     }
