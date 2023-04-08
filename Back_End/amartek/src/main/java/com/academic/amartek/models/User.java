@@ -3,6 +3,9 @@ package com.academic.amartek.models;
 import java.util.Set;
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name = "tb_m_user")
 public class User {
@@ -17,27 +20,35 @@ public class User {
 
     @ManyToOne
     @JoinColumn(name = "role_id", nullable = false)
+    @JsonManagedReference 
     private Role role;
 
     @OneToMany(mappedBy = "user")
+    @JsonBackReference
     public Set<UserSkill> userSkill;
 
     @OneToMany(mappedBy = "user")
+    @JsonBackReference
     public Set<Project> project;
 
     @OneToMany(mappedBy = "user")
+    @JsonBackReference
     public Set<Education> education;
 
     @OneToOne (mappedBy = "user")
+    @JsonBackReference
     private Biodata biodata;
 
     @OneToOne(mappedBy = "applicant")
+    @JsonBackReference
     private Recruitment applicat;
 
     @OneToOne(mappedBy = "trainer")
+    @JsonBackReference
     private Recruitment trainer;
 
     @OneToOne(mappedBy = "hr")
+    @JsonBackReference
     private Recruitment hr;
 
     public String getId() {

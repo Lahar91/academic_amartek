@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table(name = "tb_m_univ")
 public class Univ {
@@ -21,6 +23,7 @@ public class Univ {
     private String univName;
 
     @OneToMany(mappedBy = "univ")
+    @JsonBackReference
     private Set<Education> education;
 
     public Integer getId() {
