@@ -2,15 +2,16 @@ package com.academic.amartek.models;
 
 import java.util.Set;
 import javax.persistence.*;
+
 import org.hibernate.annotations.GenericGenerator;
-
-
-
 
 @Entity
 @Table(name = "tb_m_user")
 public class User {
     @Id
+    @GeneratedValue(generator = "custom-id")
+    @GenericGenerator(name = "custom-id", strategy = "com.academic.amartek.config.CustomIdGenerator")
+    @Column(name = "id", updatable = false, unique = true, nullable = false, length = 20)
     private String id;
 
     @Column(name = "email", nullable = false)
@@ -19,7 +20,6 @@ public class User {
     @Column(name ="password", nullable = false)
     private String password;
 
- 
     @ManyToOne
     @JoinColumn(name = "role_id", nullable = false)
     private Role role;
@@ -36,95 +36,68 @@ public class User {
     @OneToOne (mappedBy = "user")
     private Biodata biodata;
 
-
-    @OneToOne(mappedBy = "applicat")
+    @OneToOne(mappedBy = "applicant")
     private Recruitment applicat;
-
-    @OneToOne(mappedBy = "hr")
-    private Recruitment hr;
 
     @OneToOne(mappedBy = "trainer")
     private Recruitment trainer;
 
-    
-    public Recruitment getTrainer() {
-        return trainer;
-    }
+    @OneToOne(mappedBy = "hr")
+    private Recruitment hr;
 
-    public void setTrainer(Recruitment trainer) {
-        this.trainer = trainer;
-    }
-
-    public Recruitment getApplicat() {
-        return applicat;
-    }
-
-    public void setApplicat(Recruitment applicat) {
-        this.applicat = applicat;
-    }
-
-
-
-    public Recruitment getHr() {
-        return hr;
-    }
-
-    public void setHr(Recruitment hr) {
-        this.hr = hr;
-    }
-
-    public String getId(){
+    public String getId() {
         return id;
     }
 
-    public void setId(String id){
+    public void setId(String id) {
         this.id = id;
     }
 
     public String getEmail() {
         return email;
     }
+
     public void setEmail(String email) {
         this.email = email;
     }
 
-    public String getPassword(){
+    public String getPassword() {
         return password;
     }
 
-    public void setPassword(String password){
+    public void setPassword(String password) {
         this.password = password;
     }
 
-    public Role getRole(){
+    public Role getRole() {
         return role;
     }
 
-    public void setRole(Role role){
+    public void setRole(Role role) {
         this.role = role;
     }
 
-    public Set<UserSkill> getUserSkill(){
+    public Set<UserSkill> getUserSkill() {
         return userSkill;
     }
 
-    public void setUserSkill(Set<UserSkill> userSkill){
+    public void setUserSkill(Set<UserSkill> userSkill) {
         this.userSkill = userSkill;
     }
 
-    public Set<Project> getProject(){
+    public Set<Project> getProject() {
         return project;
     }
 
-    public void setProject(Set<Project> project){
+    public void setProject(Set<Project> project) {
         this.project = project;
     }
 
-    public Set<Education> getEducation(){
+    public Set<Education> getEducation() {
         return education;
     }
 
-    public void setEducation (Set<Education> education){
+    public void setEducation(Set<Education> education) {
         this.education = education;
     }
 
@@ -136,5 +109,28 @@ public class User {
         this.biodata = biodata;
     }
 
+    public Recruitment getApplicat() {
+        return applicat;
+    }
+
+    public void setApplicat(Recruitment applicat) {
+        this.applicat = applicat;
+    }
+
+    public Recruitment getTrainer() {
+        return trainer;
+    }
+
+    public void setTrainer(Recruitment trainer) {
+        this.trainer = trainer;
+    }
+
+    public Recruitment getHr() {
+        return hr;
+    }
+
+    public void setHr(Recruitment hr) {
+        this.hr = hr;
+    }
 
 }

@@ -13,7 +13,6 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "tb_m_degree")
 public class Degree {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
