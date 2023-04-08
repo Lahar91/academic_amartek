@@ -2,19 +2,25 @@ package com.academic.amartek.models;
 
 import java.util.Set;
 import javax.persistence.*;
+import org.hibernate.annotations.GenericGenerator;
+
+
+
 
 @Entity
 @Table(name = "tb_m_user")
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-
-    @Column(name = "email", nullable = false)
-    private String email;
+    @GeneratedValue(generator = "custom-id")
+    @GenericGenerator(name = "custom-id", strategy = "com.academic.amartek.config.CustomIdGenerator")
+    @Column(name = "id", updatable = false, unique = true, nullable = false, length = 20)
+    private String id;
 
     @Column(name ="password", nullable = false)
     private String password;
+
+    @Column(name = "email")
+    private String email;
 
     @ManyToOne
     @JoinColumn(name = "role_id", nullable = false)
@@ -35,11 +41,20 @@ public class User {
     @OneToOne(mappedBy = "user")
     private Recruitment recruitment;
 
-    public Integer getId(){
+    public User() {
+        
+    }
+
+    public User( String email, String password) {
+        this.email = email;
+        this.password = password;
+    }
+
+    public String getId(){
         return id;
     }
 
-    public void setId(Integer id){
+    public void setId(String id){
         this.id = id;
     }
 
@@ -66,11 +81,11 @@ public class User {
         this.role = role;
     }
 
-    public Set<UserSkill> getUserSkill() {
+    public Set<UserSkill> getUserSkill(){
         return userSkill;
     }
 
-    public void setUserSkill(Set<UserSkill> userSkill) {
+    public void setUserSkill(Set<UserSkill> userSkill){
         this.userSkill = userSkill;
     }
 
@@ -102,8 +117,8 @@ public class User {
         return recruitment;
     }
 
-    public void setRecruitment(Recruitment recruiment) {
-        this.recruitment = recruiment;
+    public void setRecruitment(Recruitment recruitment) {
+        this.recruitment = recruitment;
     }
 
 }

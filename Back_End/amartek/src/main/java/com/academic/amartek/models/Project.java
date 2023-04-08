@@ -1,7 +1,6 @@
 package com.academic.amartek.models;
 
 import java.sql.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,10 +17,6 @@ public class Project {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
-    private User user;    
-
     @Column(name ="name")
     private String name;
 
@@ -32,55 +27,53 @@ public class Project {
     private Date project_end;
 
     @Column(name = "project_desc")
-    private String project_desc;
+    private Date project_desc;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 
 
-    public Integer getId() {
-        return id;
+    public String getUserId() {
+        return user.toString();
     }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
+    public void setUserId(User user) {
         this.user = user;
     }
 
     public String getName() {
         return name;
     }
-
     public void setName(String name) {
         this.name = name;
     }
 
-    public Date getProject_start() {
+    public Date getProjectStart() {
         return project_start;
     }
-
-    public void setProject_start(Date project_start) {
+    public void setProjectStart(Date project_start) {
         this.project_start = project_start;
     }
 
-    public Date getProject_end() {
+    public Date getProjectEnd() {
         return project_end;
     }
-
-    public void setProject_end(Date project_end) {
+    public void setProjectEnd(Date project_end) {
         this.project_end = project_end;
     }
 
-    public String getProject_desc() {
+    public Date getProjectDesc() {
         return project_desc;
     }
-
-    public void setProject_desc(String project_desc) {
+    public void setProjectDesc(Date project_desc) {
         this.project_desc = project_desc;
     }
     
+    public User getUser(){
+        return user;
+    }
+        
+    public void setUser(User user){
+        this.user = user;
+    }
 }

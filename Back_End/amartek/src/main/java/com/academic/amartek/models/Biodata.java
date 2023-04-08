@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Table(name = "tb_m_biodata")
 public class Biodata {
     @Id
-    private Integer id;
+    private String id;
 
     @OneToOne
     @JoinColumn(name="id", nullable = false)
@@ -26,10 +26,10 @@ public class Biodata {
     @Column(name = "summary")
     private String summary;
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
     public String getFullname() {

@@ -35,11 +35,11 @@ public class AppSecurityConfig {
      // authorization
      @Bean
      public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
-         httpSecurity
-                 .csrf().disable()
+         httpSecurity.csrf().disable()
                  .authorizeRequests((auth) -> {
                      try {
                          auth
+                                 .antMatchers("/user/**").permitAll()
                                  .antMatchers("/api/**").permitAll()
                                  .antMatchers("/role/**", "/employee/**, /dashboard/**").hasAuthority("QA")
                                  .anyRequest().authenticated()
