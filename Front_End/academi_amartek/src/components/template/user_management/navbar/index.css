@@ -76,6 +76,16 @@
   border: 1px solid var(--main-color);
 }
 
+/* navbar hamburger menu */
+.nav-hamburger{
+  display: none;
+}
+
+/* navbar versi mobile phone */
+.mobile-nav{
+  display: none;
+}
+
 /* sticky navbar ketika di scroll */
 .sticky-nav {
   position: fixed;
@@ -92,4 +102,112 @@
   font-weight: bold;
   text-decoration: underline !important;
   text-decoration-color: black;
+}
+
+/* Responsive Breakpoints */
+/* for tablet */
+@media screen and (max-width: 768px){
+  .navbar .nav-link {
+    display: none;
+  }
+
+  /* styling untuk hamburger menu navbar */
+  .nav-hamburger{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4.5px 0;
+    background-color: var(--main-color);
+    width: 35px;
+    height: 35px;
+    border-radius: 5px;
+  }
+
+  /* hamburger menu ketika di hover */
+  .nav-hamburger:hover{
+    cursor: pointer;
+  }
+
+  /* hamburger menu unit */
+  .nav-hamburger div{
+    width: 20px;
+    height: 2px;
+    background-color: white;
+  }
+
+  /* ubah warna logo close di hamburger menu */
+  .nav-hamburger .close-mobile-nav path{
+    stroke: white !important;
+  }
+
+  /* styling navbar versi mobile phone */
+  .mobile-nav{
+    display: block;
+    background-color: white;
+    width: 50vw;
+    height: 100vh;
+    padding: 20px 20px 0 10px;
+    position: absolute;
+    right: 0;
+    transform: translateX(2000px);
+  }
+
+  /* memunculkan navbar versi mobile phone */
+  .show-mobile-nav{
+    transform: translateX(0);
+  }
+
+  /* styling navbar versi mobile phone bagian link container */
+  .mobile-nav .mobile-nav-link {
+    display: flex;
+    flex-direction: column;
+    gap: 10px 0;
+    margin-bottom: 20px;
+  }
+
+  /* styling navbar versi mobile phone bagian link unit */
+  .mobile-nav .mobile-nav-link a{
+    padding: 13px;
+    text-align: center;
+    text-decoration: none !important;
+    font-weight: normal;
+    transition: .3s;
+    font-size: .9em;
+    background-color: var(--main-color);
+    color: white !important;
+  }
+
+  /* styling navbar versi mobile phone bagian button container */
+  .mobile-nav .mobile-nav-btn{
+    display: flex;
+    flex-direction: column;
+    gap: 15px 0;
+  }
+
+  /* styling navbar versi mobile phone bagian button unit */
+  .mobile-nav .mobile-nav-btn button{
+    padding: 10px 35px 10px 35px;
+    background-color: white;
+    border: 1px solid var(--main-color);
+    cursor: pointer;
+    color: black;
+    font-size: .9em;
+    outline: none;
+  }
+}
+
+/* for mobile */
+@media screen and (max-width: 576px){
+  .navbar .nav-logo img{
+    width: 180px;
+  }
+
+  .mobile-nav .mobile-nav-link a{
+    font-size: .8em;
+  }
+
+  .mobile-nav .mobile-nav-btn button{
+    font-size: .8em;
+  }
 }

@@ -2,10 +2,14 @@
 import "./index.css";
 import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
+import { GrClose } from "react-icons/gr";
 
 function Navbar() {
 	// state buat bikin sticky navbar ketika di scroll
 	const [stickyClass, setStickyClass] = useState("");
+
+	// state untuk toggle hamburger menu navbar versi mobile phone
+	const [toggleHamburgerMenu, setToggleHamburgerMenu] = useState(false);
 
 	useEffect(() => {
 		// untuk menambahkan event scroll
@@ -31,6 +35,8 @@ function Navbar() {
 					<img src="/amartek-logo.png" alt="Logo App" />
 				</div>
 				<div className="nav-link">
+					{/* navlink untuk menggunakan class active nav ketika aplikasi atau link tersebut */}
+					{/* di akses */}
 					<ul>
 						<li>
 							<NavLink
@@ -54,7 +60,37 @@ function Navbar() {
 						<button>Daftar</button>
 					</div>
 				</div>
+
+				{/* navbar hamburger menu */}
+				<div
+					className="nav-hamburger"
+					onClick={() => {
+						setToggleHamburgerMenu(!toggleHamburgerMenu);
+					}}
+				>
+					{toggleHamburgerMenu ? (
+						<GrClose size="22px" className="close-mobile-nav" />
+					) : (
+						<>
+							<div></div>
+							<div></div>
+							<div></div>
+						</>
+					)}
+				</div>
 			</nav>
+
+			{/* html navbar versi mobile phone */}
+			<div className={`mobile-nav ${toggleHamburgerMenu ? "show-mobile-nav" : ""}`}>
+				<div className="mobile-nav-link">
+					<NavLink to="/">Cari Lowongan</NavLink>
+					<NavLink to="/tentang">Tentang</NavLink>
+				</div>
+				<div className="mobile-nav-btn">
+					<button>Masuk</button>
+					<button>Daftar</button>
+				</div>
+			</div>
 		</div>
 	);
 }

@@ -1,12 +1,14 @@
+import Footer from "../footer";
 import Navbar from "../navbar";
 
-function Tentang() {
+function TemplateTentang() {
 	return (
 		<div>
 			<Navbar />
 			<h3>test</h3>
+			<Footer />
 		</div>
 	);
 }
 
-export default Tentang;
+export default TemplateTentang;
