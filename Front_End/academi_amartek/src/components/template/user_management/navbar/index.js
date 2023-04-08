@@ -1,8 +1,7 @@
 // import css nya
 import "./index.css";
 import { useState, useEffect } from "react";
-
-// test
+import { NavLink } from "react-router-dom";
 
 function Navbar() {
 	// state buat bikin sticky navbar ketika di scroll
@@ -34,10 +33,20 @@ function Navbar() {
 				<div className="nav-link">
 					<ul>
 						<li>
-							<a href="/#">Cari Lowongan</a>
+							<NavLink
+								to="/"
+								className={({ isActive }) => (isActive ? "active" : "inactive")}
+							>
+								Cari Lowongan
+							</NavLink>
 						</li>
 						<li>
-							<a href="/#">Kontak Kami</a>
+							<NavLink
+								to="/tentang"
+								className={({ isActive }) => (isActive ? "active" : "inactive")}
+							>
+								Tentang
+							</NavLink>
 						</li>
 					</ul>
 					<div className="nav-button">

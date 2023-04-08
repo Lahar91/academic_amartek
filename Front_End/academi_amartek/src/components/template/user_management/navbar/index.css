@@ -1,8 +1,8 @@
 /* container navbar */
 .navbar{
-  width: 1200px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 20px 0 0 0;
+  padding: 20px 20px 0 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -16,7 +16,7 @@
 /* navbar link */
 .navbar .nav-link{
   display: flex;
-  width: 550px;
+  gap: 0 30px;
   justify-content: space-between;
   align-items: center;
 }
@@ -24,14 +24,14 @@
 /* navbar link container */
 .navbar .nav-link ul {
   display: flex;
-  width: 270px;
+  gap: 0 10px;
   justify-content: space-between;
 }
 
 /* navbar link unit */
 .navbar .nav-link ul li {
   list-style-type: none;
-  font-size: 1em;
+  font-size: .9em;
 }
 
 /* navbar link href */
@@ -52,7 +52,7 @@
 /* navbar link button container */
 .navbar .nav-link .nav-button{
   display: flex;
-  width: 250px;
+  gap: 0 15px;
   justify-content: space-between;
 }
 
@@ -80,8 +80,16 @@
 .sticky-nav {
   position: fixed;
   top: 0;
-  padding: 0 30px 10px 30px;
+  padding-bottom: 10px;
   background-color: white;
   width: 100%;
   box-shadow: 0px 2px 25px rgba(157, 157, 157, 0.3);
+}
+
+/* kalo navbar active */
+.active{
+  color: var(--main-color) !important;
+  font-weight: bold;
+  text-decoration: underline !important;
+  text-decoration-color: black;
 }
