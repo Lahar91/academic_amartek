@@ -2,6 +2,10 @@ package com.academic.amartek.models;
 
 import java.util.Set;
 import javax.persistence.*;
+import org.hibernate.annotations.GenericGenerator;
+
+
+
 
 @Entity
 @Table(name = "tb_m_user")
@@ -15,6 +19,7 @@ public class User {
     @Column(name ="password", nullable = false)
     private String password;
 
+ 
     @ManyToOne
     @JoinColumn(name = "role_id", nullable = false)
     private Role role;
@@ -99,11 +104,11 @@ public class User {
         this.role = role;
     }
 
-    public Set<UserSkill> getUserSkill() {
+    public Set<UserSkill> getUserSkill(){
         return userSkill;
     }
 
-    public void setUserSkill(Set<UserSkill> userSkill) {
+    public void setUserSkill(Set<UserSkill> userSkill){
         this.userSkill = userSkill;
     }
 

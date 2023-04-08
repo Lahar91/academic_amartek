@@ -1,9 +1,6 @@
 package com.academic.amartek.models;
-
 import javax.persistence.GenerationType;
-
 import java.util.Set;
-
 import javax.persistence.*;
 
 @Entity
