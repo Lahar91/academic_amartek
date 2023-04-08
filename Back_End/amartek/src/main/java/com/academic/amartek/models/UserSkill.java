@@ -23,7 +23,6 @@ public class UserSkill {
     @JoinColumn(name = "skill_id", nullable = false)
     private Skill skill;
     
-
     public Integer getId() {
         return id;
     }
