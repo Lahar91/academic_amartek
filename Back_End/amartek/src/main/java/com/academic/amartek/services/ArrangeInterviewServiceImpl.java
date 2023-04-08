@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.academic.amartek.models.Recruitment;
-import com.academic.amartek.models.User;
 import com.academic.amartek.repositories.IArrangeInterviewRepository;
 
 
@@ -25,14 +24,7 @@ public class ArrangeInterviewServiceImpl implements IArrangeInterviewService{
     @Override
     public List<Recruitment> GetAll() {
         List<Recruitment> recruitments = iArrangeInterviewRepository.findAll();
-        recruitments.forEach(recruitment -> {
-            User hr = recruitments.findById(recuritment.getHr().getId()).orElse(null);
-            User trainer = recruitments.findById(recuritment.getTrainer().getId()).orElse(null);
-            User applicant = recruitments.findById(recuritment.getApplicant().getId()).orElse(null);
-            
-            recruitments.setHr(hr);
-            recruitments.setTrainer(trainer);
-            recruitments.setApplicant(applicant);        
+              
             return recruitments;
     }
 
