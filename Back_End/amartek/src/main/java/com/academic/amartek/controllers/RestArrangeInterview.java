@@ -44,8 +44,8 @@ public class RestArrangeInterview {
     @PutMapping("interview/{id}")
     public ResponseEntity<Object> Save(@RequestBody Recruitment recruitment, @PathVariable(required = true) Integer id) {
         Recruitment setrecruitment = iArrangeInterviewService.Get(id);
-        setrecruitment.setDate_interview_hr(recruitment.getDate_interview_hr());
-        if (setrecruitment.getDate_interview_hr() != null) {
+        setrecruitment.setDateInterviewHr(recruitment.getDateInterviewHr());
+        if (setrecruitment.getDateInterviewHr() != null) {
             return Response.generateResponse("Data di update", HttpStatus.OK);
 
         }else{
