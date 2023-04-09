@@ -1,6 +1,6 @@
 package com.academic.amartek.models;
 
-import java.util.Date;
+// import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -24,10 +24,10 @@ public class Job {
     private String location;
 
     @Column(name = "open_date", nullable = false)
-    private Date openDate;
+    private String openDate;
 
     @Column(name = "close_date", nullable = false)
-    private Date closeDate;
+    private String closeDate;
 
     @Column(name = "job_desc", nullable = false)
     private String jobDesc;
@@ -39,7 +39,8 @@ public class Job {
     private String jobBenefit;
 
     // penghubung ke FK
-    @OneToOne (mappedBy = "job")
+    // @JsonIgnore
+    @OneToOne (mappedBy = "job")    
     public Recruitment recruitment;
 
     public Integer getId() {
@@ -66,19 +67,19 @@ public class Job {
         this.location = location;
     }
 
-    public Date getOpenDate() {
+    public String getOpenDate() {
         return openDate;
     }
 
-    public void setOpenDate(Date openDate) {
+    public void setOpenDate(String openDate) {
         this.openDate = openDate;
     }
 
-    public Date getCloseDate() {
+    public String getCloseDate() {
         return closeDate;
     }
 
-    public void setCloseDate(Date closeDate) {
+    public void setCloseDate(String closeDate) {
         this.closeDate = closeDate;
     }
 
@@ -106,12 +107,12 @@ public class Job {
         this.jobBenefit = jobBenefit;
     }
 
-    // public Recruitment getRecruitment() {
-    //     return recruitment;
-    // }
+    public Recruitment getRecruitment() {
+        return recruitment;
+    }
 
-    // public void setRecruitment(Recruitment recruitment) {
-    //     this.recruitment = recruitment;
-    // }
-    
+    public void setRecruitment(Recruitment recruitment) {
+        this.recruitment = recruitment;
+    }
+
 }

@@ -13,7 +13,6 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "tb_m_univ")
 public class Univ {
-
     @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -21,8 +20,6 @@ public class Univ {
     @Column(name = "univ_name")
     private String univName;
 
-    // @OneToMany(mappedBy = "univ")
-    // private Set<Education> education;
 
     public Integer getId() {
         return id;
@@ -40,11 +37,5 @@ public class Univ {
         this.univName = univName;
     }
 
-    // public Set<Education> getEducation() {
-    //     return education;
-    // }
-
-    // public void setEducation(Set<Education> education) {
-    //     this.education = education;
-    // }
+ 
 }

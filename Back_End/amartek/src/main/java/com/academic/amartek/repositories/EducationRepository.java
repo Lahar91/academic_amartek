@@ -4,9 +4,11 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.academic.amartek.models.Education;
 
@@ -38,5 +40,9 @@ public interface EducationRepository extends JpaRepository<Education, Integer> {
    
 
     //Education findByUserId(String userId);
+    @Transactional
+    @Modifying
+    @Query(value = "DELETE FROM tb_tr_education WHERE id =:id", nativeQuery = true)
+    public void deleteEducation(@Param("id") Integer id);
     
 }

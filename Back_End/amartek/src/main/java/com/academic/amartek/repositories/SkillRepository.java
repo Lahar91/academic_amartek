@@ -15,6 +15,7 @@ public interface SkillRepository extends JpaRepository<Skill, Integer>{
 
     @Query(value = "SELECT * FROM tb_m_skill", nativeQuery = true)
     public List<Map<String, Object>> getSkill();
+
     
 
 }
