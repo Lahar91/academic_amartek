@@ -163,4 +163,11 @@ public class UserServiceImpl implements IUserService {
         // Add business logic and validation code here
         return userRepository.findAll();
     }
+
+    @Override
+    public User getid(String id) {
+        // TODO Auto-generated method stub
+
+            return userRepository.findById(id).orElseThrow(() -> new IllegalStateException("data not found"));
+        }    
 }
