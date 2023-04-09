@@ -1,7 +1,5 @@
 package com.academic.amartek.models;
 
-// import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,6 +7,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 @Table(name="tb_m_job")
@@ -38,9 +38,9 @@ public class Job {
     @Column(name = "job_benefit", nullable = false)
     private String jobBenefit;
 
-    // penghubung ke FK
-    // @JsonIgnore
-    @OneToOne (mappedBy = "job")    
+    // penghubung ke FK    
+    @OneToOne (mappedBy = "job")       
+    @JsonBackReference
     public Recruitment recruitment;
 
     public Integer getId() {

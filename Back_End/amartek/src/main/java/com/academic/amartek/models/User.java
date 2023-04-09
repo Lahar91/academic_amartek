@@ -3,15 +3,13 @@ package com.academic.amartek.models;
 import java.util.Set;
 import javax.persistence.*;
 
-import org.hibernate.annotations.GenericGenerator;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "tb_m_user")
 public class User {
     @Id
-    @GeneratedValue(generator = "custom-id")
-    @GenericGenerator(name = "custom-id", strategy = "com.academic.amartek.config.CustomIdGenerator")
-    @Column(name = "id", updatable = false, unique = true, nullable = false, length = 20)
     private String id;
 
     @Column(name = "email", nullable = false)
@@ -22,27 +20,35 @@ public class User {
 
     @ManyToOne
     @JoinColumn(name = "role_id", nullable = false)
+    @JsonManagedReference 
     private Role role;
 
     @OneToMany(mappedBy = "user")
+    @JsonBackReference
     public Set<UserSkill> userSkill;
 
     @OneToMany(mappedBy = "user")
+    @JsonBackReference
     public Set<Project> project;
 
     @OneToMany(mappedBy = "user")
+    @JsonBackReference
     public Set<Education> education;
 
     @OneToOne (mappedBy = "user")
+    @JsonBackReference
     private Biodata biodata;
 
     @OneToOne(mappedBy = "applicant")
+    @JsonBackReference
     private Recruitment applicat;
 
     @OneToOne(mappedBy = "trainer")
+    @JsonBackReference
     private Recruitment trainer;
 
     @OneToOne(mappedBy = "hr")
+    @JsonBackReference
     private Recruitment hr;
 
     public String getId() {

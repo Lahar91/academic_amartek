@@ -4,6 +4,8 @@ import java.util.Date;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name = "tb_m_biodata")
 public class Biodata {
@@ -12,6 +14,7 @@ public class Biodata {
 
     @OneToOne
     @JoinColumn(name="id", nullable = false)
+    @JsonManagedReference
     private User user;
 
     @Column(name = "fullname")

@@ -8,6 +8,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name="tb_tr_userskill")
 public class UserSkill {
@@ -17,10 +19,12 @@ public class UserSkill {
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
+    @JsonManagedReference
     private User user;
 
     @ManyToOne
     @JoinColumn(name = "skill_id", nullable = false)
+    @JsonManagedReference
     private Skill skill;
     
     public Integer getId() {
