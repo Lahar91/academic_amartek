@@ -17,7 +17,7 @@ function Footer() {
 					<div className="foot-info">
 						{/* alamat */}
 						<div className="alamat">
-							<FaRegAddressBook size={23} color="#707B8E" />
+							<FaRegAddressBook size={22} color="#707B8E" />
 							<p>
 								Chase Plaza, Jl. Jenderal Sudirman No.Kav. 21, Kuningan, Karet, Kecamatan
 								Setiabudi, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12920
@@ -71,7 +71,7 @@ function Footer() {
 				</div>
 
 				{/* copyright text */}
-				<p className="copyright">&copy; Created by AMARTEK GDP Bootcamp-21 🐱‍🏍</p>
+				<p className="copyright">&copy; Created by AMARTEK GDP Bootcamp-21 ✨</p>
 			</section>
 		</div>
 	);

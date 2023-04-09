@@ -1,29 +1,58 @@
+import TemplateCardLowongan from "../card_lowongan";
 import Footer from "../footer";
 import Navbar from "../navbar";
 import "./index.css";
 import { useEffect } from "react";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 function TemplateCariLowongan() {
 	useEffect(() => {
-		document.title = "Cari lowongan pekerjaan";
+		document.title = "Daftar Lowongan Pekerjaan";
 	}, []);
+
+	// setingan untuk slider nya
+	const settings = {
+		dots: true,
+		speed: 500,
+		autoplay: true,
+		infinite: true,
+		slidesToShow: 3,
+		slidesToScroll: 1,
+		arrows: false,
+		initialSlide: 0,
+		responsive: [
+			{
+				breakpoint: 1155,
+				settings: {
+					slidesToShow: 2,
+					centerMode: true,
+					centerPadding: "0",
+				},
+			},
+			{
+				breakpoint: 768,
+				settings: {
+					slidesToShow: 1,
+					centerMode: true,
+					centerPadding: "0",
+				},
+			},
+		],
+	};
 
 	return (
 		<div className="cari-lowongan">
 			<Navbar />
 
-			<h3>
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam accusamus
-				molestiae tempore dignissimos quis placeat, quae ab hic fugiat, accusantium neque
-				nisi veniam dolor, a quos natus iusto mollitia. Nobis beatae sequi libero earum.
-				Illum molestiae nulla optio commodi expedita. Enim vel dolorem quidem dolore illum
-				reprehenderit quis delectus reiciendis quia consequuntur cupiditate, itaque magni
-				dicta ad facilis nihil dolor animi necessitatibus tenetur doloremque recusandae
-				laboriosam atque veniam. Asperiores libero, nulla tempore obcaecati culpa harum
-				explicabo provident ducimus quo fugit laboriosam ipsum accusamus! Dolores hic,
-				laborum, adipisci, optio repellendus ratione omnis quod fugit incidunt consectetur
-				quae sit quisquam numquam iure?
-			</h3>
+			{/* component card slider */}
+			<Slider {...settings} className="wrap-card-lowongan">
+				<TemplateCardLowongan />
+				<TemplateCardLowongan />
+				<TemplateCardLowongan />
+				<TemplateCardLowongan />
+			</Slider>
 
 			<Footer />
 		</div>

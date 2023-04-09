@@ -24,7 +24,7 @@ function Navbar() {
 		if (window !== undefined) {
 			// atur ukuran layar pada saat scroll
 			let windowHeight = window.scrollY;
-			windowHeight > 300 ? setStickyClass("sticky-nav") : setStickyClass("");
+			windowHeight > 250 ? setStickyClass("sticky-nav") : setStickyClass("");
 		}
 	};
 
@@ -56,8 +56,8 @@ function Navbar() {
 						</li>
 					</ul>
 					<div className="nav-button">
-						<button>Masuk</button>
-						<button>Daftar</button>
+						<NavLink to="/">Masuk</NavLink>
+						<NavLink to="/">Daftar</NavLink>
 					</div>
 				</div>
 
@@ -87,8 +87,8 @@ function Navbar() {
 					<NavLink to="/tentang">Tentang</NavLink>
 				</div>
 				<div className="mobile-nav-btn">
-					<button>Masuk</button>
-					<button>Daftar</button>
+					<NavLink to="/">Masuk</NavLink>
+					<NavLink to="/">Daftar</NavLink>
 				</div>
 			</div>
 		</div>
