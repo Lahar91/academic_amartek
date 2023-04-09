@@ -1,5 +1,7 @@
 package com.academic.amartek.models;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,6 +11,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 @Table(name="tb_m_job")
@@ -24,10 +27,12 @@ public class Job {
     private String location;
 
     @Column(name = "open_date", nullable = false)
-    private String openDate;
+    @JsonFormat(pattern = "yyy-MM-dd")
+    private Date openDate;
 
     @Column(name = "close_date", nullable = false)
-    private String closeDate;
+    @JsonFormat(pattern = "yyy-MM-dd")
+    private Date closeDate;
 
     @Column(name = "job_desc", nullable = false)
     private String jobDesc;
@@ -67,19 +72,19 @@ public class Job {
         this.location = location;
     }
 
-    public String getOpenDate() {
+    public Date getOpenDate() {
         return openDate;
     }
 
-    public void setOpenDate(String openDate) {
+    public void setOpenDate(Date openDate) {
         this.openDate = openDate;
     }
 
-    public String getCloseDate() {
+    public Date getCloseDate() {
         return closeDate;
     }
 
-    public void setCloseDate(String closeDate) {
+    public void setCloseDate(Date closeDate) {
         this.closeDate = closeDate;
     }
 
