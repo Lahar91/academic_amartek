@@ -1,6 +1,5 @@
 package com.academic.amartek.controllers;
 
-import java.sql.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,15 +11,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.academic.amartek.dto.Response;
 import com.academic.amartek.dto.ResponseHandler;
 import com.academic.amartek.dto.statusdto;
 import com.academic.amartek.models.Recruitment;
-import com.academic.amartek.models.User;
-import com.academic.amartek.repositories.IUserRepository;
 import com.academic.amartek.services.IArrangeInterviewService;
 import com.academic.amartek.services.UserServiceImpl;
 
@@ -61,7 +57,7 @@ public class RestArrangeInterview {
 
             }else if( adddate.dateInterviewHr != null && adddate.hr_id != null) {
 
-                setrecruitment.setTrainer(userServiceImpl.getid(adddate.hr_id));
+                setrecruitment.setHr(userServiceImpl.getid(adddate.hr_id));
                 setrecruitment.setDateInterviewHr(adddate.dateInterviewHr);
                 iArrangeInterviewService.Save(setrecruitment);
                 return Response.generateResponse("Data status HR terupdatee", HttpStatus.OK);
@@ -72,18 +68,17 @@ public class RestArrangeInterview {
     @PutMapping("interview/trainer/{id}")
         public ResponseEntity<Object> SaveInterviewTrainer(@RequestBody statusdto adddate, @PathVariable(required = true) Integer id) {
         Recruitment setrecruitment = iArrangeInterviewService.Get(id);
-        System.out.println("ini id nya " + id);
-        System.out.println("status  =  " + adddate);
+
         if (adddate.statusTrainer != null && adddate.dateInterviewTrainer != null && adddate.trainer_id != null) {
             
-            setrecruitment.setStatusHr(adddate.statusHr);
+            setrecruitment.setStatusTrainer(adddate.statusTrainer);
             iArrangeInterviewService.Save(setrecruitment);
             return Response.generateResponse("Data status HR terupdate", HttpStatus.OK);
 
         }else if( adddate.dateInterviewHr != null && adddate.trainer_id != null) {
             
             setrecruitment.setTrainer(userServiceImpl.getid(adddate.trainer_id));
-            setrecruitment.setDateInterviewHr(adddate.dateInterviewHr);
+            setrecruitment.setDateInterviewTrainer(adddate.dateInterviewTrainer);
             iArrangeInterviewService.Save(setrecruitment);
             return Response.generateResponse("Data status Trainer terupdatee", HttpStatus.OK);
         }
