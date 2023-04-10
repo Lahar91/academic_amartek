@@ -1,14 +1,9 @@
 package com.academic.amartek.controllers;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
+
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -22,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.academic.amartek.dto.BiodataRequestDTO;
-import com.academic.amartek.dto.CurriculumVitaeDTO;
 import com.academic.amartek.dto.EducationRequestDTO;
 import com.academic.amartek.dto.ProjectRequestDTO;
 import com.academic.amartek.dto.ResponseHandler;
@@ -85,17 +79,8 @@ public class RestCurriculumVitae {
     }
     @GetMapping("cv/assemble/{id}")
     public ResponseEntity<Object> GetCurriculumVitae(@PathVariable(required = true) String id){
-        // Map<String, Object> testdata= new HashMap<>();
-        // List<Education> educate = educationService.GetAll();
-        // testdata.put("educate", educate);
-        // List<Degree> degrees = degreeRepository.findAll();
-        // testdata.put("degree", degrees);
-        
-        // educationRepository.getCV(userId);
-        //Optional<User> user = userRepository.findById(id);
-        //Optional<UserSkill> userskill = userSkillRepository.findById(2);
+
         List<UserSkill> user = userSkillRepository.findAll();
-        //List<User> user = userRepository.findAll();
         System.out.println(id);
         return ResponseHandler.getResponse("Data Ditemukan", HttpStatus.OK, user);
     }
