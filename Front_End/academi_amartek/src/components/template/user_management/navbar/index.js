@@ -46,14 +46,6 @@ function Navbar() {
 								Cari Lowongan
 							</NavLink>
 						</li>
-						<li>
-							<NavLink
-								to="/tentang"
-								className={({ isActive }) => (isActive ? "active" : "inactive")}
-							>
-								Tentang
-							</NavLink>
-						</li>
 					</ul>
 					<div className="nav-button">
 						<NavLink to="/">Masuk</NavLink>
