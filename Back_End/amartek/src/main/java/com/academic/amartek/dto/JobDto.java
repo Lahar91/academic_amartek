@@ -8,9 +8,9 @@ public class JobDto {
     public Integer id;
     public String titleJob;
     public String location;
-    @JsonFormat(pattern = "yyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     public Date openDate;
-    @JsonFormat(pattern = "yyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     public Date closeDate;
     public String jobDesc;
     public String jobRequire;

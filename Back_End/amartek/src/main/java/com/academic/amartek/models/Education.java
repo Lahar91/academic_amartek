@@ -19,7 +19,7 @@ public class Education {
     private Integer id;
 
     @ManyToOne
-    @JoinColumn (name = "user_id", nullable = false)
+    @JoinColumn (name = "user_id")
     @JsonManagedReference
     private User user;
 

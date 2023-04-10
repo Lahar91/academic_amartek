@@ -18,12 +18,12 @@ public class UserSkill {
     private Integer id;
 
     @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
+    @JoinColumn(name = "user_id")
     @JsonManagedReference
     private User user;
 
     @ManyToOne
-    @JoinColumn(name = "skill_id", nullable = false)
+    @JoinColumn(name = "skill_id")
     @JsonManagedReference
     private Skill skill;
     

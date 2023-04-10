@@ -13,7 +13,7 @@ public class Biodata {
     private String id;
 
     @OneToOne
-    @JoinColumn(name="id", nullable = false)
+    @JoinColumn(name="id")
     @JsonManagedReference
     private User user;
 

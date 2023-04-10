@@ -20,27 +20,27 @@ public class Job {
     @GeneratedValue (strategy = GenerationType.IDENTITY) 
     private Integer id;
 
-    @Column(name = "title_job", nullable = false)
+    @Column(name = "title_job")
     private String titleJob;
 
-    @Column(name = "location", nullable = false)
+    @Column(name = "location")
     private String location;
 
-    @Column(name = "open_date", nullable = false)
-    @JsonFormat(pattern = "yyy-MM-dd")
+    @Column(name = "open_date")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date openDate;
 
-    @Column(name = "close_date", nullable = false)
-    @JsonFormat(pattern = "yyy-MM-dd")
+    @Column(name = "close_date")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date closeDate;
 
-    @Column(name = "job_desc", nullable = false)
+    @Column(name = "job_desc")
     private String jobDesc;
 
-    @Column(name = "job_require", nullable = false)
+    @Column(name = "job_require")
     private String jobRequire;
 
-    @Column(name = "job_benefit", nullable = false)
+    @Column(name = "job_benefit")
     private String jobBenefit;
 
     // penghubung ke FK    
