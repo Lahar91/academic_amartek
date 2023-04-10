@@ -4,6 +4,8 @@ import com.academic.amartek.models.Role;
 import com.academic.amartek.models.User;
 import com.academic.amartek.repositories.IRoleRepository;
 import com.academic.amartek.repositories.IUserRepository;
+import com.academic.amartek.repositories.UserRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +20,10 @@ public class UserServiceImpl implements IUserService {
 
     @Autowired
     private IUserRepository userRepository;
+
+    //test
+    @Autowired
+    private UserRepository userRepository2;
 
     @Autowired
     private IRoleRepository roleRepository;
@@ -168,6 +174,6 @@ public class UserServiceImpl implements IUserService {
     public User getid(String id) {
         // TODO Auto-generated method stub
 
-            return userRepository.findById(id).orElseThrow(() -> new IllegalStateException("data not found"));
+            return userRepository2.findById(id).orElseThrow(() -> new IllegalStateException("data not found"));
         }    
 }

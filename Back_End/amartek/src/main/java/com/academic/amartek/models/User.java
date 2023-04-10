@@ -39,15 +39,15 @@ public class User {
     @JsonBackReference
     private Biodata biodata;
 
-    @OneToOne(mappedBy = "applicant")
+    @OneToOne(mappedBy = "applicant", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonBackReference
     private Recruitment applicat;
 
-    @OneToOne(mappedBy = "trainer")
+    @OneToOne(mappedBy = "trainer", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonBackReference
     private Recruitment trainer;
 
-    @OneToOne(mappedBy = "hr")
+    @OneToOne(mappedBy = "hr", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonBackReference
     private Recruitment hr;
 

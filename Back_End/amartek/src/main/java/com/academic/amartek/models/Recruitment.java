@@ -22,22 +22,22 @@ public class Recruitment {
     private int id;
 
     @OneToOne
-    @JoinColumn(name="applicant_id", nullable = false)  
+    @JoinColumn(name="applicant_id")  
     @JsonManagedReference   
     private User applicant;
 
     @OneToOne
-    @JoinColumn(name="hr_id", nullable = false)   
+    @JoinColumn(name="hr_id")   
     @JsonManagedReference  
     private User hr;
 
     @OneToOne
-    @JoinColumn(name="trainer_id", nullable = false)  
+    @JoinColumn(name="trainer_id")  
     @JsonManagedReference   
     private User trainer;
 
     @OneToOne()
-    @JoinColumn(name="job_id", nullable = false)    
+    @JoinColumn(name="job_id")    
     @JsonManagedReference 
     private Job job;
 
