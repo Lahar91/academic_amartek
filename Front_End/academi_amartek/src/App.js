@@ -1,12 +1,16 @@
-import "./App.css";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import CariLowongan from "./components/page/user_management/cari_lowongan";
+import Tentang from "./components/page/user_management/tentang";
 
-import CariLowongan from "./components/template/user_management/cari_lowongan";
-
+// ini untuk route url aplikasi
 function App() {
 	return (
-		<div className="App">
-			<CariLowongan />
-		</div>
+		<Router>
+			<Routes>
+				<Route path="/" element={<CariLowongan />} />
+				<Route path="/tentang" element={<Tentang />} />
+			</Routes>
+		</Router>
 	);
 }
 
