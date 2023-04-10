@@ -148,9 +148,9 @@ public class RestCurriculumVitae {
         Project project = new Project();
         project.setUser(user);
         project.setName(projectRequestDTO.getName());
-        project.setProjectStart(projectRequestDTO.getProjectStart());
-        project.setProjectEnd(projectRequestDTO.getProjectEnd());
-        project.setProjectDesc(projectRequestDTO.getProjectDesc());
+        project.setProject_start(projectRequestDTO.getProjectStart());
+        project.setProject_end(projectRequestDTO.getProjectEnd());
+        project.setProject_desc(projectRequestDTO.getProjectDesc());
         projectRepository.save(project);
 
 
@@ -206,9 +206,9 @@ public class RestCurriculumVitae {
         project.setId(id);
         project.setUser(user);
         project.setName(projectRequestDTO.getName());
-        project.setProjectStart(projectRequestDTO.getProjectStart());
-        project.setProjectEnd(projectRequestDTO.getProjectEnd());
-        project.setProjectDesc(projectRequestDTO.getProjectDesc());
+        project.setProject_start(projectRequestDTO.getProjectStart());
+        project.setProject_end(projectRequestDTO.getProjectEnd());
+        project.setProject_desc(projectRequestDTO.getProjectDesc());
         projectRepository.save(project);
         return ResponseHandler.generateResponse("Data Berhasil Diubah", HttpStatus.OK);
     }

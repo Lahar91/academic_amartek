@@ -36,7 +36,7 @@ public class RestArrangeInterview {
     @GetMapping("interview")
     public ResponseEntity<Object> Get() {
         List<Recruitment> recruitment = iArrangeInterviewService.GetAll();
-        return ResponseHandler.generateResponse("Data di update", HttpStatus.OK, recruitment);
+        return ResponseHandler.getResponse("Data di update", HttpStatus.OK, recruitment);
     }
 
     @GetMapping("interview/{id}")
