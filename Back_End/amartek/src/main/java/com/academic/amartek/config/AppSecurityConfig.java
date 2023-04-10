@@ -20,13 +20,16 @@ public class AppSecurityConfig {
          return authenticationConfiguration.getAuthenticationManager();
      }
  
-     // @Bean
-     // protected void configure(AuthenticationManagerBuilder auth) throws Exception
-     // {
-     // auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
-     // }
- 
-     // encrypt
+     @Bean
+     public ITemplateResolver thymeleafTemplateResolver() {
+         ClassLoaderTemplateResolver templateResolver = new ClassLoaderTemplateResolver();
+         templateResolver.setPrefix("mail-templates/");
+         templateResolver.setSuffix(".html");
+         templateResolver.setTemplateMode("HTML");
+         templateResolver.setCharacterEncoding("UTF-8");
+         return templateResolver;
+     }
+     
      @Bean
      public PasswordEncoder passwordEncoder() {
          return new BCryptPasswordEncoder();
