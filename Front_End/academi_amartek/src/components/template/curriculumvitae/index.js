@@ -35,6 +35,7 @@ function CurriculumVitae(){
           setHttpStatus(null)
         };
       }, [httpStatus]);
+      console.log(dataBiodata)
 
     return(
 <div>
@@ -44,6 +45,18 @@ function CurriculumVitae(){
                     <div className="text-center mb-3">
                         <div className="rounded"><img className="rounded-circle img-fluid img-thumbnail"
                                 style={styleimg} alt="avatar2" src=""></img></div>
+                                {dataBiodata && dataBiodata.data.map((data) => {
+                                    return (
+                                        <div>
+                                            <h4>{data.id}</h4>
+                                            <h4>{data.fullname}</h4>
+                                            <h4>{data.birth_date}</h4>
+                                            <h4>{data.no_telp}</h4>
+                                            <h4>{data.summary}</h4>
+                                            <h4>{data.address}</h4>
+                                        </div>
+                                    );
+                                })}
                         <h4 className="card-title mt-2">ILHAM BUONO PUTRA</h4>
                     </div>
                     <ul>
@@ -87,7 +100,12 @@ function CurriculumVitae(){
                 </div>
             </div>
         </div>
-<table className="" border={5}>
+<table className="" border={1}>
+    <thead>
+        <tr>
+            <td>Education</td>
+        </tr>
+    </thead>
     <tr>
         <td>s
             <p>test</p>

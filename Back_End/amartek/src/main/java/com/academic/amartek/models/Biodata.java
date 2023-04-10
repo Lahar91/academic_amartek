@@ -4,17 +4,18 @@ import java.util.Date;
 
 import javax.persistence.*;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "tb_m_biodata")
 public class Biodata {
-    @Id    
+    @Id
+    @Column(name="id")
     private String id;
 
     @OneToOne
+    @JsonIgnore
     @JoinColumn(name="id", nullable = false)
-    @JsonManagedReference
     private User user;
 
     @Column(name = "fullname")
@@ -24,7 +25,7 @@ public class Biodata {
     private Date datebirth;
 
     @Column(name = "no_telp")
-    private Date noTelp;
+    private Integer noTelp;
 
     @Column(name = "address")
     private String address;
@@ -64,11 +65,11 @@ public class Biodata {
         this.datebirth = datebirth;
     }
 
-    public Date getNoTelp() {
+    public Integer getNoTelp() {
         return noTelp;
     }
 
-    public void setNoTelp(Date noTelp) {
+    public void setNoTelp(Integer noTelp) {
         this.noTelp = noTelp;
     }
 
