@@ -25,4 +25,6 @@ public interface UserSkillRepository extends JpaRepository<UserSkill, Integer> {
     @Modifying
     @Query(value = "DELETE FROM tb_tr_userskill WHERE id =:id", nativeQuery = true)
     public void deleteUserSkill(@Param("id") Integer id);
+
+    public List<UserSkill> findByUserId(String id);
 }

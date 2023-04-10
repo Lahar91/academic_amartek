@@ -31,13 +31,13 @@ public class RestRecController {
     @GetMapping("recruitment")
     public ResponseEntity<Object> get(){
         List<Recruitment> recruitments = iRecService.Get();                          
-        return ResponseHandler.generateResponse("data ditemukan", HttpStatus.OK, recruitments);
+        return ResponseHandler.getResponse("data ditemukan", HttpStatus.OK, recruitments);
     }
 
     @GetMapping("recruitment/{id}")
     public ResponseEntity<Object> get(@PathVariable(required = true) Integer id){
         Recruitment recruitment = iRecService.Get(id);                
-        return ResponseHandler.generateResponse("data ditemukan", HttpStatus.OK, recruitment);        
+        return ResponseHandler.getResponse("data ditemukan", HttpStatus.OK, recruitment);        
     }
 
     @PostMapping("recruitment")

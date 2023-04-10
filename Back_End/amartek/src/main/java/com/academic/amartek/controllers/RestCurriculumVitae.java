@@ -83,21 +83,28 @@ public class RestCurriculumVitae {
         this.userRepository = userRepository;
         this.userSkillService = userSkillService;
     }
-    @GetMapping("cv/assemble/{id}")
-    public ResponseEntity<Object> GetCurriculumVitae(@PathVariable(required = true) String id){
+    @GetMapping("cv/assemble/{userId}")
+    public ResponseEntity<Object> GetCurriculumVitae(@PathVariable(required = true) String userId){
         // Map<String, Object> testdata= new HashMap<>();
         // List<Education> educate = educationService.GetAll();
         // testdata.put("educate", educate);
         // List<Degree> degrees = degreeRepository.findAll();
         // testdata.put("degree", degrees);
-        
-        // educationRepository.getCV(userId);
-        //Optional<User> user = userRepository.findById(id);
-        //Optional<UserSkill> userskill = userSkillRepository.findById(2);
-        List<UserSkill> user = userSkillRepository.findAll();
-        //List<User> user = userRepository.findAll();
-        System.out.println(id);
-        return ResponseHandler.getResponse("Data Ditemukan", HttpStatus.OK, user);
+        // List<Biodata> biodata = biodataRepository.findAll();
+        List<Project> project = projectRepository.findByUserId(userId);
+        List<Education> education = educationRepository.findByUserId(userId);
+        List<UserSkill> userskill = userSkillRepository.findByUserId(userId);
+        Optional<User> user = userRepository.findById(userId);
+        List<UserSkill> userSkills = userSkillRepository.findByUserId(userId);
+        List<Object> combinedList = new ArrayList<>();
+        combinedList.addAll(project);
+        combinedList.addAll(education);
+        combinedList.addAll(userskill);
+        combinedList.addAll(userSkills);
+
+        // educationRepository.getCV(id)
+       
+        return ResponseHandler.getResponse("Data Ditemukan", HttpStatus.OK, combinedList );
     }
     @GetMapping("cv/userskill/{userId}")
     public ResponseEntity<Object> getUserSkill(@PathVariable(required = true) String userId){
@@ -148,7 +155,7 @@ public class RestCurriculumVitae {
         userSkillRepository.save(userSkill);
 
 
-            return ResponseHandler.generateResponse("Data Berhasil Disimpan", HttpStatus.OK);
+        return ResponseHandler.generateResponse("Data Berhasil Disimpan", HttpStatus.OK);
         //return ResponseHandler.generateResponse("Data gagal Disimpan", HttpStatus.BAD_REQUEST);
     }
     @PostMapping("cv/project")
@@ -207,6 +214,49 @@ public class RestCurriculumVitae {
 
             return ResponseHandler.generateResponse("Data Berhasil Disimpan", HttpStatus.OK);
     }
+    @PostMapping("cv/insertcv")
+    public ResponseEntity<Object> insertcv(@RequestBody CurriculumVitaeDTO cvdto){
+        User user = new User();
+        UserSkill userSkill = new UserSkill();
+        Skill skill = new Skill();
+        Univ univ = new Univ();
+        Degree degree = new Degree();
+        Major major = new Major();
+        user.setId(cvdto.getUserId());
+        skill.setId(cvdto.getSkillId());
+        userSkill.setUser(user);
+        userSkill.setSkill(skill);
+        userSkillRepository.save(userSkill);
+        Project project = new Project();
+        project.setUser(user);
+        project.setName(cvdto.getProjectName());
+        project.setProject_start(cvdto.getProjectStart());
+        project.setProject_end(cvdto.getProjectEnd());
+        project.setProject_desc(cvdto.getProjectDesc());
+        projectRepository.save(project);
+        Education education = new Education();
+        degree.setId(cvdto.getDegreeId());
+        univ.setId(cvdto.getUnivId());
+        major.setId(cvdto.getMajorId());
+        education.setUser(user);
+        education.setDegree(degree);
+        education.setUniv(univ);
+        education.setGpa(cvdto.getGpa());
+        education.setMajor(major);
+        educationRepository.save(education);
+        Biodata biodata = new Biodata();
+        biodata.setId(user.getId());
+        biodata.setFullname(cvdto.getFullname());
+        biodata.setDatebirth(cvdto.getBirthDate());
+        biodata.setNoTelp(cvdto.getNoTelp());
+        biodata.setAddress(cvdto.getAddress());
+        biodata.setSummary(cvdto.getSummary());
+        biodataRepository.save(biodata);
+
+
+        return ResponseHandler.generateResponse("Data Berhasil Disimpan", HttpStatus.OK);
+
+    }
     @PutMapping("cv/userskill/{id}")
     public ResponseEntity<Object> editUserSkill(@PathVariable(required = true) Integer id, @RequestBody UserSkillRequest userSkillReq){
         // User user = userRepository.getById(userSkillReq.getUser());
@@ -239,10 +289,18 @@ public class RestCurriculumVitae {
     }
     @PutMapping("cv/education/{id}")
     public ResponseEntity<Object> editEducation(@PathVariable(required = true) Integer id, @RequestBody EducationRequestDTO educationRequestDTO){
-        User user = userRepository.getById(educationRequestDTO.getUser());
-        Degree degree = degreeRepository.getById(educationRequestDTO.getDegreeId());
-        Univ univ = univRepository.getById(educationRequestDTO.getUnivId());
-        Major major = majorRepository.getById(educationRequestDTO.getMajorId());
+        // User user = userRepository.getById(educationRequestDTO.getUser());
+        // Degree degree = degreeRepository.getById(educationRequestDTO.getDegreeId());
+        // Univ univ = univRepository.getById(educationRequestDTO.getUnivId());
+        // Major major = majorRepository.getById(educationRequestDTO.getMajorId());
+        User user = new User();
+        user.setId(educationRequestDTO.getUser());
+        Degree degree = new Degree();
+        degree.setId(educationRequestDTO.getDegreeId());
+        Univ univ = new Univ();
+        univ.setId(educationRequestDTO.getUnivId());
+        Major major = new Major();
+        major.setId(educationRequestDTO.getMajorId());
         Education education = new Education();
         education.setId(id);
         education.setUser(user);
@@ -271,27 +329,29 @@ public class RestCurriculumVitae {
 
     @DeleteMapping("cv/userskill/{id}")
     public ResponseEntity<Object> deleteuserskill(@PathVariable(required = true) Integer id){
-    userSkillRepository.deleteUserSkill(id);
-    //userSkillRepository.deleteById(id);
+    // userSkillRepository.deleteUserSkill(id);
+    userSkillRepository.deleteById(id);
     return ResponseHandler.generateResponse("Data Berhasil diHapus", HttpStatus.OK);
     }
 
     @DeleteMapping("cv/project/{id}")
     public ResponseEntity<Object> deleteProject(@PathVariable(required = true) Integer id){
-    //projectRepository.deleteById(id);
-    projectRepository.deleteProject(id);
+    projectRepository.deleteById(id);
+    // projectRepository.deleteProject(id);
     return ResponseHandler.generateResponse("Data Berhasil diHapus", HttpStatus.OK);
     }
 
     @DeleteMapping("cv/education/{id}")
     public ResponseEntity<Object> deleteEducation(@PathVariable(required = true) Integer id){
-    educationRepository.deleteEducation(id);
+    //educationRepository.deleteEducation(id);
+    educationRepository.deleteById(id);
     return ResponseHandler.generateResponse("Data Berhasil diHapus", HttpStatus.OK);
     }
 
     @DeleteMapping("cv/biodata/{userId}")
     public ResponseEntity<Object> deleteBiodata(@PathVariable(required = true) String userId){
-    biodataRepository.deleteBiodata(userId);
+    //biodataRepository.deleteBiodata(userId);
+    biodataRepository.deleteById(userId);
     return ResponseHandler.generateResponse("Data Berhasil diHapus", HttpStatus.OK);
     }
 

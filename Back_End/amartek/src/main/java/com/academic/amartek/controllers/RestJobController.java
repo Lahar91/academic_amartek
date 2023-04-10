@@ -32,13 +32,13 @@ public class RestJobController {
     @GetMapping("job")
     public ResponseEntity<Object> get(){
         List<Job> jobs = iJobService.Get();                          
-        return ResponseHandler.generateResponse("data ditemukan", HttpStatus.OK, jobs);
+        return ResponseHandler.getResponse("data ditemukan", HttpStatus.OK, jobs);
     }
 
     @GetMapping("job/{id}")
     public ResponseEntity<Object> get(@PathVariable(required = true) Integer id){
         Job job = iJobService.Get(id);                
-        return ResponseHandler.generateResponse("data ditemukan", HttpStatus.OK, job);        
+        return ResponseHandler.getResponse("data ditemukan", HttpStatus.OK, job);        
     }
 
     @PostMapping("job")

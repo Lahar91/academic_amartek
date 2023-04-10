@@ -1,6 +1,6 @@
 package com.academic.amartek.dto;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class CurriculumVitaeDTO {
     private String userId;
@@ -8,7 +8,7 @@ public class CurriculumVitaeDTO {
     private String bId;
     private String fullname;
     private Date birthDate;
-    private String noTelp;
+    private Integer noTelp;
     private String address;
     private String summary;
     private String skillName;
@@ -19,28 +19,33 @@ public class CurriculumVitaeDTO {
     private String degreeName;
     private String univName;
     private String majorName;
-    private Double gpa;
+    private String gpa;
+    private Integer skillId, majorId, univId, degreeId;
     
-    public CurriculumVitaeDTO(String userId, String email, String bId, String fullname, Date birthDate, String noTelp,
-            String address, String summary, String skillName, String projectName, Date projectStart, Date projectEnd,
-            String projectDesc, String degreeName, String univName, String majorName, Double gpa) {
-        this.userId = userId;
-        this.email = email;
-        this.bId = bId;
-        this.fullname = fullname;
-        this.birthDate = birthDate;
-        this.noTelp = noTelp;
-        this.address = address;
-        this.summary = summary;
-        this.skillName = skillName;
-        this.projectName = projectName;
-        this.projectStart = projectStart;
-        this.projectEnd = projectEnd;
-        this.projectDesc = projectDesc;
-        this.degreeName = degreeName;
-        this.univName = univName;
-        this.majorName = majorName;
-        this.gpa = gpa;
+    
+    public Integer getSkillId() {
+        return skillId;
+    }
+    public void setSkillId(Integer skillId) {
+        this.skillId = skillId;
+    }
+    public Integer getMajorId() {
+        return majorId;
+    }
+    public void setMajorId(Integer majorId) {
+        this.majorId = majorId;
+    }
+    public Integer getUnivId() {
+        return univId;
+    }
+    public void setUnivId(Integer univId) {
+        this.univId = univId;
+    }
+    public Integer getDegreeId() {
+        return degreeId;
+    }
+    public void setDegreeId(Integer degreeId) {
+        this.degreeId = degreeId;
     }
     public String getUserId() {
         return userId;
@@ -72,10 +77,10 @@ public class CurriculumVitaeDTO {
     public void setBirthDate(Date birthDate) {
         this.birthDate = birthDate;
     }
-    public String getNoTelp() {
+    public Integer getNoTelp() {
         return noTelp;
     }
-    public void setNoTelp(String noTelp) {
+    public void setNoTelp(Integer noTelp) {
         this.noTelp = noTelp;
     }
     public String getAddress() {
@@ -138,10 +143,10 @@ public class CurriculumVitaeDTO {
     public void setMajorName(String majorName) {
         this.majorName = majorName;
     }
-    public Double getGpa() {
+    public String getGpa() {
         return gpa;
     }
-    public void setGpa(Double gpa) {
+    public void setGpa(String gpa) {
         this.gpa = gpa;
     }
 
