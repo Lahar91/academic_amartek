@@ -12,14 +12,14 @@ public class User {
     @Id
     private String id;
 
-    @Column(name = "email", nullable = false)
+    @Column(name = "email")
     private String email;
 
-    @Column(name ="password", nullable = false)
+    @Column(name ="password")
     private String password;
 
     @ManyToOne
-    @JoinColumn(name = "role_id", nullable = false)
+    @JoinColumn(name = "role_id")
     @JsonManagedReference 
     private Role role;
 

@@ -19,7 +19,7 @@ public class Skill {
     @GeneratedValue (strategy = GenerationType.IDENTITY) 
     private Integer id;
 
-    @Column(name = "skill_name", nullable = false)
+    @Column(name = "skill_name")
     private String skillName;
 
     // penghubung ke FK
