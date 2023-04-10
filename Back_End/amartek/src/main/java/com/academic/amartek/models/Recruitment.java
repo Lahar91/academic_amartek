@@ -11,6 +11,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name="tb_tr_recruitment")
 public class Recruitment {
@@ -19,28 +22,34 @@ public class Recruitment {
     private int id;
 
     @OneToOne
-    @JoinColumn(name="applicant_id", nullable = false)    
+    @JoinColumn(name="applicant_id", nullable = false)  
+    @JsonManagedReference   
     private User applicant;
 
     @OneToOne
-    @JoinColumn(name="hr_id", nullable = false)    
+    @JoinColumn(name="hr_id", nullable = false)   
+    @JsonManagedReference  
     private User hr;
 
     @OneToOne
-    @JoinColumn(name="trainer_id", nullable = false)    
+    @JoinColumn(name="trainer_id", nullable = false)  
+    @JsonManagedReference   
     private User trainer;
 
     @OneToOne()
-    @JoinColumn(name="job_id", nullable = false)
+    @JoinColumn(name="job_id", nullable = false)    
+    @JsonManagedReference 
     private Job job;
 
     @Column(name="date_interview_trainer")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date dateInterviewTrainer;
 
     @Column(name="status_trainer")
     private String statusTrainer;
   
     @Column(name="date_interview_hr")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date dateInterviewHr;
   
     @Column(name = "status_hr")

@@ -15,8 +15,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.academic.amartek.dto.Response;
 import com.academic.amartek.dto.ResponseHandler;
+import com.academic.amartek.dto.statusdto;
 import com.academic.amartek.models.Recruitment;
 import com.academic.amartek.services.IArrangeInterviewService;
+import com.academic.amartek.services.UserServiceImpl;
 
 @CrossOrigin()
 @RestController
@@ -24,15 +26,17 @@ import com.academic.amartek.services.IArrangeInterviewService;
 public class RestArrangeInterview {
     @Autowired
     private IArrangeInterviewService iArrangeInterviewService;
+    private UserServiceImpl userServiceImpl;
 
-    public RestArrangeInterview(IArrangeInterviewService iArrangeInterviewService){
+    public RestArrangeInterview(IArrangeInterviewService iArrangeInterviewService, UserServiceImpl userServiceImpl){
         this.iArrangeInterviewService = iArrangeInterviewService;
+        this.userServiceImpl = userServiceImpl;
     }
 
     @GetMapping("interview")
     public ResponseEntity<Object> Get() {
         List<Recruitment> recruitment = iArrangeInterviewService.GetAll();
-        return ResponseHandler.getResponse("Data di update", HttpStatus.OK, recruitment);
+        return ResponseHandler.generateResponse("Data di update", HttpStatus.OK, recruitment);
     }
 
     @GetMapping("interview/{id}")
@@ -41,16 +45,45 @@ public class RestArrangeInterview {
         return recruitment;
     }
 
-    @PutMapping("interview/{id}")
-    public ResponseEntity<Object> Save(@RequestBody Recruitment recruitment, @PathVariable(required = true) Integer id) {
-        Recruitment setrecruitment = iArrangeInterviewService.Get(id);
-        setrecruitment.setDateInterviewHr(recruitment.getDateInterviewHr());
-        if (setrecruitment.getDateInterviewHr() != null) {
-            return Response.generateResponse("Data di update", HttpStatus.OK);
 
-        }else{
-            return Response.generateResponse("Data gagal di update", HttpStatus.BAD_REQUEST);
-        }
+        @PutMapping("interview/hr/{id}")
+        public ResponseEntity<Object> SaveInterviewHr(@RequestBody statusdto adddate, @PathVariable(required = true) Integer id) {
+        Recruitment setrecruitment = iArrangeInterviewService.Get(id);
+            if (adddate.statusHr != null && adddate.dateInterviewHr != null && adddate.hr_id != null) {
+
+                setrecruitment.setStatusHr(adddate.statusHr);
+                iArrangeInterviewService.Save(setrecruitment);
+                return Response.generateResponse("Data status HR terupdate", HttpStatus.OK);
+
+            }else if( adddate.dateInterviewHr != null && adddate.hr_id != null) {
+
+                setrecruitment.setHr(userServiceImpl.getid(adddate.hr_id));
+                setrecruitment.setDateInterviewHr(adddate.dateInterviewHr);
+                iArrangeInterviewService.Save(setrecruitment);
+                return Response.generateResponse("Data status HR terupdatee", HttpStatus.OK);
+            }
+            return Response.generateResponse("Data tidak terupdate", HttpStatus.BAD_REQUEST);
     }
+
+    @PutMapping("interview/trainer/{id}")
+        public ResponseEntity<Object> SaveInterviewTrainer(@RequestBody statusdto adddate, @PathVariable(required = true) Integer id) {
+        Recruitment setrecruitment = iArrangeInterviewService.Get(id);
+
+        if (adddate.statusTrainer != null && adddate.dateInterviewTrainer != null && adddate.trainer_id != null) {
+            
+            setrecruitment.setStatusTrainer(adddate.statusTrainer);
+            iArrangeInterviewService.Save(setrecruitment);
+            return Response.generateResponse("Data status HR terupdate", HttpStatus.OK);
+
+        }else if( adddate.dateInterviewHr != null && adddate.trainer_id != null) {
+            
+            setrecruitment.setTrainer(userServiceImpl.getid(adddate.trainer_id));
+            setrecruitment.setDateInterviewTrainer(adddate.dateInterviewTrainer);
+            iArrangeInterviewService.Save(setrecruitment);
+            return Response.generateResponse("Data status Trainer terupdatee", HttpStatus.OK);
+        }
+        return Response.generateResponse("Data tidak terupdate", HttpStatus.BAD_REQUEST);
+    }
+
 
 }

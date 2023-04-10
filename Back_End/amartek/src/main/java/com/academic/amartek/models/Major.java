@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table(name = "tb_m_major")
 public class Major {
@@ -20,8 +22,9 @@ public class Major {
     @Column(name = "major_name")
     private String majorName;
 
-    // @OneToMany(mappedBy = "major")
-    // private Set<Education> education;
+    @OneToMany(mappedBy = "major")
+    @JsonBackReference
+    private Set<Education> education;
 
     public Integer getId() {
         return id;
@@ -39,12 +42,12 @@ public class Major {
         this.majorName = majorName;
     }
 
-    // public Set<Education> getEducation() {
-    //     return education;
-    // }
+    public Set<Education> getEducation() {
+        return education;
+    }
 
-    // public void setEducation(Set<Education> education) {
-    //     this.education = education;
-    // }
+    public void setEducation(Set<Education> education) {
+        this.education = education;
+    }
 
 }

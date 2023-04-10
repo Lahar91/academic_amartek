@@ -13,4 +13,5 @@ public interface IUserService {
     List<User> getAllUsers();
     ResponseEntity<Object> loginUser(User user);
     ResponseEntity<Object> registerUser(User user);
+    User getid(String id);
 }
