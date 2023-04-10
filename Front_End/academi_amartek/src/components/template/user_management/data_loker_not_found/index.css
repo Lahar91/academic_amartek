@@ -1,0 +1,28 @@
+.loker-not-found{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px 0;
+  padding: 0 20px 0 20px;
+}
+
+.loker-not-found img{
+  width: 400px;
+}
+
+.loker-not-found p {
+  font-size: 1.3em;
+}
+
+/* Responsive Breakpoints */
+/* for tablet */
+@media screen and (max-width: 576px){
+  .loker-not-found img{
+    width: 250px;
+  }
+
+  .loker-not-found p {
+    font-size: 1em;
+  }
+}

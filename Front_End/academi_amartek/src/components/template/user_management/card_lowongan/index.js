@@ -2,7 +2,7 @@ import "./index.css";
 import { MdAccessTimeFilled } from "react-icons/md";
 import { NavLink } from "react-router-dom";
 
-function TemplateCardLowongan() {
+function TemplateCardLowongan({ judul }) {
 	return (
 		<div className="card">
 			{/* container card info */}
@@ -14,7 +14,7 @@ function TemplateCardLowongan() {
 
 				{/* container card judul */}
 				<div className="judul-card">
-					<NavLink to="/">Lowongan AMARTEK GDP Batch 22</NavLink>
+					<NavLink to="/">{judul}</NavLink>
 				</div>
 
 				{/* container deskripsi card */}

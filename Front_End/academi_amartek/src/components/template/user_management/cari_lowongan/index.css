@@ -1,3 +1,54 @@
+/* styling untuk search bar loker */
+.cari-lowongan .search-loker{
+  max-width: 1200px;
+  margin: 30px auto 30px auto;
+  padding: 0 20px 0 20px;
+  display: flex;
+  align-items: center;
+  gap: 0 15px;
+}
+
+.cari-lowongan .search-loker .search-bar{
+  width: 100%;
+}
+
+.cari-lowongan .search-loker .search-bar input{
+  padding: 15px;
+  width: 100%;
+  outline: none;
+  border: 1.5px solid var(--main-color);
+  border-radius: 5px;
+  font-size: 1em;
+}
+
+.cari-lowongan .search-loker .btn-search button {
+  padding: 14px;
+  cursor: pointer;
+  border: none;
+  background-color: var(--main-color);
+  color: #fff;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--main-color);
+  transition: .3s;
+}
+
+.cari-lowongan .search-loker .btn-search button:hover{
+  background-color: #fff;
+  border: 1px solid var(--main-color);
+}
+
+.cari-lowongan .search-loker .btn-search button svg{
+  font-size: 1.6em;
+  stroke-width: 2.2px;
+}
+
+.cari-lowongan .search-loker .btn-search button:hover svg {
+  color: var(--main-color);
+}
+
 /* styling div wrapping card lowongan */
 .wrap-card-lowongan{
   max-width: 1200px;
@@ -9,11 +60,11 @@
 .slick-slide > div {
   display: grid;
   place-items: center;
-  padding: 0px;
+  padding-bottom: 100px;
 }
 
 .slick-list{
-  height: 645px;
+  height: 610px;
 }
 
 .slick-dots{

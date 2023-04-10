@@ -24,7 +24,7 @@ function Navbar() {
 		if (window !== undefined) {
 			// atur ukuran layar pada saat scroll
 			let windowHeight = window.scrollY;
-			windowHeight > 250 ? setStickyClass("sticky-nav") : setStickyClass("");
+			windowHeight > 170 ? setStickyClass("sticky-nav") : setStickyClass("");
 		}
 	};
 
