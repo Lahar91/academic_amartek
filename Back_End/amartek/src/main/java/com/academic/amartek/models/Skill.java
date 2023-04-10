@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table(name="tb_m_skill")
 public class Skill {
@@ -22,6 +24,7 @@ public class Skill {
 
     // penghubung ke FK
     @OneToMany(mappedBy = "skill")
+    @JsonBackReference
     public Set<UserSkill> userSkill;
 
     public Integer getId() {

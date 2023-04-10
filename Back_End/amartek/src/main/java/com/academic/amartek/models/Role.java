@@ -1,6 +1,11 @@
 package com.academic.amartek.models;
+
 import javax.persistence.GenerationType;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import java.util.Set;
+
 import javax.persistence.*;
 
 @Entity
@@ -14,6 +19,7 @@ public class Role {
     private String name;
 
     @OneToMany(mappedBy = "role")
+    @JsonBackReference
     public Set<User> user;
 
     public Integer getId() {

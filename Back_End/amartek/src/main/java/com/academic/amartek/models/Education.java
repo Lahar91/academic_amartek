@@ -9,6 +9,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name = "tb_tr_education")
 public class Education {
@@ -18,14 +20,17 @@ public class Education {
 
     @ManyToOne
     @JoinColumn (name = "user_id", nullable = false)
+    @JsonManagedReference
     private User user;
 
     @ManyToOne
     @JoinColumn (name = "degree_id")
+    @JsonManagedReference
     private Degree degree;
     
     @ManyToOne
     @JoinColumn (name = "univ_id")
+    @JsonManagedReference
     private Univ univ;
 
     @Column ( name = "gpa")
@@ -33,6 +38,7 @@ public class Education {
 
     @ManyToOne
     @JoinColumn (name = "major_id")
+    @JsonManagedReference
     private Major major;
 
     public Integer getId() {
