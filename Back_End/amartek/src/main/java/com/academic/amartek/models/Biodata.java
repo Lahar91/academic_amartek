@@ -4,18 +4,26 @@ import java.util.Date;
 
 import javax.persistence.*;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "tb_m_biodata")
 public class Biodata {
+    // @Id
+    // @Column(name="id")
+    // private String id;
+
+    // @OneToOne
+    // @JsonIgnore
+    // @JoinColumn(name="id", nullable = false)
+    // private User user;
     @Id
     @Column(name="id")
     private String id;
 
     @OneToOne
-    @JsonIgnore
     @JoinColumn(name="id", nullable = false)
+    @JsonManagedReference
     private User user;
 
     @Column(name = "fullname")
