@@ -1,0 +1,204 @@
+/* styling cv container */
+.cv-container{
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* styling cv data diri */
+.cv-data-diri, .cv-project-exp{
+  padding: 20px;
+  box-shadow: 0px 2px 13px rgba(157, 157, 157, 0.3);
+  position: relative;
+}
+
+.cv-data-diri .edit-data-diri{
+  position: absolute;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid var(--main-color);
+  cursor: pointer;
+  transition: .3s;
+}
+
+/* style untuk button edit data diri */
+.cv-data-diri .edit-data-diri:hover{
+  background-color: var(--main-color);
+}
+
+.cv-data-diri .edit-data-diri svg {
+  font-size: 1em;
+  transition: .3s;
+  color: var(--main-color);
+}
+
+.cv-data-diri .edit-data-diri:hover svg{
+  color: #fff;
+}
+/* end style untuk button edit data diri */
+
+.cv-data-diri .img-data-diri img {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+  display: block;
+}
+
+.cv-data-diri .nama-data-diri{
+  text-align: center;
+  margin-top: 15px;
+  font-size: 1.1em;
+  margin-bottom: 30px;
+}
+
+.flex-title{
+  display: flex;
+  gap: 0 20px;
+  padding-bottom: 17px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+}
+
+.flex-title .cv-title, .cv-title-value{
+  display: flex;
+  flex-direction: column;
+  gap: 5px 0;
+  font-weight: bold;
+}
+
+.cv-title-value {
+  font-weight: normal;
+}
+
+.cv-title p, .cv-title-value p {
+  margin-bottom: 0 !important;
+}
+
+.cv-data-diri .cv-summary-data-diri{
+  padding-top: 10px;
+}
+
+.cv-data-diri .cv-summary-data-diri p:nth-child(1){
+  font-size: 1.1em;
+  margin-bottom: 8px;
+}
+/* end cv data diri */
+
+
+/* cv project experience */
+.cv-project-exp{
+  margin-top: 20px;
+}
+
+.cv-project-exp .pe-judul{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cv-project-exp .pe-judul p {
+  font-size: 1.2em;
+  margin-bottom: 0 !important;
+}
+
+.cv-project-exp .pe-judul .add-pe{
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid #198754;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.cv-project-exp .pe-judul .add-pe:hover{
+  background-color: #198754;
+}
+
+.cv-project-exp .pe-judul .add-pe svg {
+  color: #198754;
+  font-size: 1.1em;
+}
+
+.cv-project-exp .pe-judul .add-pe:hover svg{
+  color: #fff;
+}
+
+.cv-project-exp .pe-value{
+  display: flex;
+  align-items: center;
+  gap: 0 20px;
+  padding-bottom: 15px;
+  padding-top: 15px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+}
+
+.cv-project-exp .pe-value .pe-value-info{
+  display: flex;
+  flex-direction: column;
+  gap: 6px 0;
+}
+
+.cv-project-exp .pe-value .pe-value-info p {
+  margin-bottom: 0 !important;
+}
+
+.cv-project-exp .pe-value .pe-value-info p:nth-child(1){
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+.cv-project-exp .pe-value .pe-value-action{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px 0;
+}
+
+.cv-project-exp .pe-value .pe-value-action .pe-action-edit, .pe-action-delete{
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  cursor: pointer;
+  transition: .3s;
+}
+
+/* cv pe button edit style */
+.cv-project-exp .pe-value .pe-value-action .pe-action-edit{
+  border: 1px solid var(--main-color);
+}
+
+.cv-project-exp .pe-value .pe-value-action .pe-action-edit:hover{
+  background-color: var(--main-color);
+}
+
+.cv-project-exp .pe-value .pe-value-action .pe-action-edit svg {
+  color: var(--main-color);
+  font-size: 1.1em;
+}
+
+.cv-project-exp .pe-value .pe-value-action .pe-action-edit:hover svg{
+  color: #fff;
+}
+/* end cv pe button edit style */
+
+/* cv pe button delete style */
+.cv-project-exp .pe-value .pe-value-action .pe-action-delete{
+  border: 1px solid #DC3545;
+}
+
+.cv-project-exp .pe-value .pe-value-action .pe-action-delete:hover{
+  background-color: #DC3545;
+}
+
+.cv-project-exp .pe-value .pe-value-action .pe-action-delete svg{
+  color: #DC3545;
+  font-size: 1.1em;
+}
+
+.cv-project-exp .pe-value .pe-value-action .pe-action-delete:hover svg {
+  color: #fff;
+}
+/* end cv pe button delete style */
+/* end cv project experience */
