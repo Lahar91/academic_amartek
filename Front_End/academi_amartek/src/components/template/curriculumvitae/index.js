@@ -1,8 +1,11 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js';
-import 'bootstrap';
+import "./index.css";
 import APICV from '../../../services/curriculumvitae';
 import { useState, useEffect } from "react";
+import React from 'react'; // impor file CSS Bootstrap
+import { Card, CardImg, CardBody, CardTitle, CardText } from 'react-bootstrap'; // impor komponen Card Bootstrap
+
 
 function CurriculumVitae(){
     const styleimg ={
@@ -39,9 +42,9 @@ function CurriculumVitae(){
 
     return(
 <div>
-        <div className="row justify-content-center">
-            <div className="card isi-konten" id="intro">
-                <div className="card-body">
+        <div class="row justify-content-center">
+            <div class="card isi-konten">    
+                    <div className="card-body">
                     <div className="text-center mb-3">
                         <div className="rounded"><img className="rounded-circle img-fluid img-thumbnail"
                                 style={styleimg} alt="avatar2" src=""></img></div>
@@ -67,7 +70,7 @@ function CurriculumVitae(){
                     </ul>
                     <p className="card-text">.</p>
                 </div>
-            </div>
+                </div>
         </div>
         <div class="row justify-content-center">
             <div class="card isi-konten" id="experience" >

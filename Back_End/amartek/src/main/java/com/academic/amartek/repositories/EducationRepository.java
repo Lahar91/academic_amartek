@@ -44,5 +44,7 @@ public interface EducationRepository extends JpaRepository<Education, Integer> {
     @Modifying
     @Query(value = "DELETE FROM tb_tr_education WHERE id =:id", nativeQuery = true)
     public void deleteEducation(@Param("id") Integer id);
+
+    public List<Education> findByUserId(String userId);
     
 }
