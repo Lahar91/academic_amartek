@@ -29,7 +29,44 @@ const APICV = {
     },
     getMajor: () =>{
         return axios.get("cv/major")
+    },
+    saveProject: (name, projectDesc, projectStart, projectEnd) =>{
+        let user = "USR001";
+        return axios.post("cv/project", {
+           user: user, 
+            name: name,
+            projectStart: projectStart, 
+            projectEnd: projectEnd, 
+            projectDesc: projectDesc});
+    },
+    saveEducation: (degreeId, univId, majorId, gpa) => {
+        let user = "USR001";
+        return axios.post("cv/education", {
+            user: user,
+            univId: univId,
+            majorId: majorId,
+            degreeId: degreeId,
+            gpa: gpa
+        });
+
+    },
+    saveUserSkill: (skillId) => {
+        let user = "USR001";
+        return axios.post("cv/userskill", {
+            user: user,
+            skill: skillId
+        })
+    },
+    deleteProject: (id) =>{
+        return axios.delete("cv/project/" + id)
+    },
+    deleteEducation: (id) =>{
+        return axios.delete("cv/education/" + id)
+    },
+    deleteUserSkill: (id) =>{
+        return axios.delete("cv/userskill/" + id)
     }
+    
 }
 
 export default APICV;
