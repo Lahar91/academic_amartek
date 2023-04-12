@@ -6,18 +6,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.academic.amartek.models.Recruitment;
-import com.academic.amartek.repositories.IArrangeInterviewRepository;
+import com.academic.amartek.repositories.ArrangeInterviewRepository;
 
 
 /**
  * ArrangeInterviewServiceImpl
  */
 @Service
-public class ArrangeInterviewServiceImpl implements IArrangeInterviewService{
+public class ArrangeInterviewServiceImpl implements ArrangeInterviewService{
     @Autowired
-    private IArrangeInterviewRepository iArrangeInterviewRepository;
+    private ArrangeInterviewRepository iArrangeInterviewRepository;
 
-    public ArrangeInterviewServiceImpl(IArrangeInterviewRepository iArrangeInterviewRepository){
+    public ArrangeInterviewServiceImpl(ArrangeInterviewRepository iArrangeInterviewRepository){
         this.iArrangeInterviewRepository = iArrangeInterviewRepository;
     }
 

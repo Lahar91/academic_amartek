@@ -5,14 +5,14 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.academic.amartek.models.Recruitment;
-import com.academic.amartek.repositories.IRecRepository;
+import com.academic.amartek.repositories.RecruitmentRepository;
 
 @Service
-public class RecServiceImpl implements IRecService {
+public class RecServiceImpl implements RecruitmentService {
 
-    private IRecRepository iRecRepository;
+    private RecruitmentRepository iRecRepository;
 
-    public RecServiceImpl(IRecRepository iRecRepository) {
+    public RecServiceImpl(RecruitmentRepository iRecRepository) {
         this.iRecRepository = iRecRepository;
     }
 

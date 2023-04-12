@@ -5,14 +5,14 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.academic.amartek.models.Job;
-import com.academic.amartek.repositories.IJobRepository;
+import com.academic.amartek.repositories.JobRepository;
 
 @Service
-public class JobServiceImpl implements IJobService {
+public class JobServiceImpl implements JobService {
 
-    private IJobRepository iJobRepository;
+    private JobRepository iJobRepository;
 
-    public JobServiceImpl(IJobRepository iJobRepository) {
+    public JobServiceImpl(JobRepository iJobRepository) {
         this.iJobRepository = iJobRepository;
     }
     

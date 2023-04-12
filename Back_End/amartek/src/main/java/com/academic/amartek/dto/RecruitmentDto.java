@@ -2,16 +2,16 @@ package com.academic.amartek.dto;
 
 import java.util.Date;
 
-import com.academic.amartek.models.Job;
-import com.academic.amartek.models.User;
+// import com.academic.amartek.models.Job;
+// import com.academic.amartek.models.User;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-public class RecruitmentDto {
+public class RecruitmentDTO {
     public int id; 
-    public User applicant;
-    public User hr;   
-    public User trainer;
-    public Job job; 
+    public String applicant;
+    public String hr;   
+    public String trainer;
+    public Integer job; 
     @JsonFormat(pattern = "yyy-MM-dd")
     public Date dateInterviewTrainer;   
     public String statusTrainer; 

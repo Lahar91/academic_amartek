@@ -4,7 +4,7 @@ import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-public class JobDto {
+public class JobDTO {
     public Integer id;
     public String titleJob;
     public String location;

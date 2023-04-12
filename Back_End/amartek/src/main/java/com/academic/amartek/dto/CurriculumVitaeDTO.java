@@ -22,7 +22,6 @@ public class CurriculumVitaeDTO {
     private String gpa;
     private Integer skillId, majorId, univId, degreeId;
     
-    
     public Integer getSkillId() {
         return skillId;
     }

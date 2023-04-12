@@ -1,68 +1,102 @@
 package com.academic.amartek;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.time.LocalDate;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
-import org.assertj.core.api.Assertions;
+import javax.mail.MessagingException;
+
+// import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+
+// import java.util.ArrayList;
+// import java.util.List;
+
+// import org.assertj.core.api.Assertions;
+// import org.junit.jupiter.api.Test;
+// import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.academic.amartek.models.Recruitment;
-import com.academic.amartek.models.Skill;
-import com.academic.amartek.services.IArrangeInterviewService;
+import com.academic.amartek.models.Email;
+import com.academic.amartek.services.EmailSenderService;
+
+// import com.academic.amartek.models.Recruitment;
+// import com.academic.amartek.models.Skill;
+// import com.academic.amartek.services.IArrangeInterviewService;
 // import com.academic.amartek.services.ISkillService;
 
 @SpringBootTest
 class AmartekApplicationTests {
+	@Autowired
+    private EmailSenderService emailSenderService;
 
-// 	private ISkillService iSkillService;
-// 	private IArrangeInterviewService iArrangeInterviewService;
+    @Test
+    public void sendHtmlMessageTest() throws MessagingException {
+        Email email = new Email();
+        email.setTo("androrif28@gmail.com");
+        email.setFrom("farhanaziz939@gmail.com");
+        email.setSubject("Offering from PT. Bumi Amartha Teknologi Mandiri Graduate Development Program");
+        email.setTemplate("welcome-email.html");
+        Map<String, Object> properties = new HashMap<>();
+        properties.put("name", "Farhan");
+		properties.put("status", "Congratulations!");
+		properties.put("position", "Graduate Development Program");
+		properties.put("location", "Jakarta Selatan");
+        // properties.put("subscriptionDate", LocalDate.now().toString());
+        // properties.put("technologies", Arrays.asList("Python", "Go", "C#"));
+        email.setProperties(properties);
 
-// 	@Autowired
-// 	public AmartekApplicationTests(ISkillService iSkillService, IArrangeInterviewService iArrangeInterviewService) {
-// 		this.iSkillService = iSkillService;
-// 		this.iArrangeInterviewService = iArrangeInterviewService;
-// 	}
+		Assertions.assertDoesNotThrow(() -> emailSenderService.sendHtmlMessage(email));
+    }
+	// private ISkillService iSkillService;
+	// private IArrangeInterviewService iArrangeInterviewService;
 
-// 	@Test
-// 	void insertSkill(){
-// 		// arrange				
-// 		Skill skill = new Skill();		
-// 		skill.setSkillName("Python Programming");		
-// 		//act
-// 		Boolean result = iSkillService.Save(skill);
-// 		// assert
-// 		Assertions.assertThat(result).isEqualTo(true);
-// 	}
+	// @Autowired
+	// public AmartekApplicationTests(ISkillService iSkillService, IArrangeInterviewService iArrangeInterviewService) {
+	// 	this.iSkillService = iSkillService;
+	// 	this.iArrangeInterviewService = iArrangeInterviewService;
+	// }
 
-// 	// @Test
-// 	// void recruitmentsGetbyid(){
-// 	// 	// Arrange
+	// @Test
+	// void insertSkill(){
+	// 	// arrange				
+	// 	Skill skill = new Skill();		
+	// 	skill.setSkillName("Python Programming");		
+	// 	//act
+	// 	Boolean result = iSkillService.Save(skill);
+	// 	// assert
+	// 	Assertions.assertThat(result).isEqualTo(true);
+	// }
+
+	// @Test
+	// void recruitmentsGetbyid(){
+	// 	// Arrange
 		
-// 	// 	List<Recruitment> recruitments = new ArrayList<>();
-// 	// 	//Act
+	// 	List<Recruitment> recruitments = new ArrayList<>();
+	// 	//Act
 
-// 	// 	Boolean result =  recruitments.add(1);
+	// 	Boolean result =  recruitments.add(1);
 
-// 	// 	//Assert
-// 	// 	Assertions.assertThat(result).isEqualTo(true);
+	// 	//Assert
+	// 	Assertions.assertThat(result).isEqualTo(true);
 
-// 	// }
+	// }
 
-// 	@Test
-// 	void recruitmentsGetall(){
-// 		// Arrange
-// 		List<Recruitment> recruitments = iArrangeInterviewService.GetAll();
+	// @Test
+	// void recruitmentsGetall(){
+	// 	// Arrange
+	// 	List<Recruitment> recruitments = iArrangeInterviewService.GetAll();
 		
-// 		//Act
-// 		Boolean result =  recruitments.isEmpty();
+	// 	//Act
+	// 	Boolean result =  recruitments.isEmpty();
 
-// 		//Assert
-// 		Assertions.assertThat(result).isEqualTo(false);
+	// 	//Assert
+	// 	Assertions.assertThat(result).isEqualTo(false);
 
-// 	}
+	// }
 
 
-// }
 }
